@@ -23,16 +23,41 @@ class Main extends CI_Controller {
 	}
 
   public function generate_login(){
-  	$data['title']="Student Login";
-  	$this->load->helper('form');
-  	$this->load->view('view_login',$data);
+  	$this->load->view('view_login');
   }
+
+  public function student(){
+  	$this->load->view('view_student');
+  }
+
 
   public function login_validation(){
-  	
+  	$this->load->library('form_validation');
+  	$this->form_validation->set_rules('login_roll_no','login_roll_no','required |xss_clean|trim|callback_validate_student');  
+  	//xss clean to prevent cross-site scripting
+  	$this->form_validation->set_rules('login_password','login_password','required |md5');  //add md5 afterwards
+
+  	//if validation successful
+  	if($this->form_validation->run()){
+  		$this->load->helper('url');     //to use redirect
+  		redirect('main/student');
+  	}else{
+  		$this->load->view('view_login');
+  	}
+
   }
 
-}
+  public function validate_student(){
+  	$this->load->model('model_student');
+  	if($this->model_student->can_login()){
+  		return true;
+  	}else{
+  		$this->form_validation->set_message('validate_student','Incorrect email or password');
+  		return false;
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+  	}
+
+  }
+
+  
+}

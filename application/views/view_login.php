@@ -45,6 +45,7 @@
                             <div class="panel-body">
                                 <!--<form role="form" method="POST" action="main/login_validation">-->
                                 <?php echo form_open('main/login_validation'); ?>
+                                <?php echo validation_errors(); ?>
 <br/>
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"  ></i></span>
