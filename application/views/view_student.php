@@ -1,4 +1,4 @@
-
+<?php ?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,22 +13,32 @@
     <title>Admin Panel</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
 
     <!-- MetisMenu CSS -->
-    <link href="assets/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+   
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bower_components/metisMenu/dist/metisMenu.min.css'); ?>">
 
     <!-- Timeline CSS -->
-    <link href="assets/dist/css/timeline.css" rel="stylesheet">
+
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/timeline.css'); ?>">
 
     <!-- Custom CSS -->
-    <link href="assets/dist/css/sb-admin-2.css" rel="stylesheet">
+  
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/sb-admin-2.css'); ?>">
 
     <!-- Morris Charts CSS -->
-    <link href="assets/bower_components/morrisjs/morris.css" rel="stylesheet">
+   
+     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bower_components/morrisjs/morris.css'); ?>">
 
     <!-- Custom Fonts -->
-    <link href="assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+   
+     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bower_components/morrisjs/morris.css'); ?>">
+
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

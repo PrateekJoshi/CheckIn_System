@@ -8,6 +8,7 @@ class Student extends CI_Controller {
 	}
 
   public function generate_profile(){
+    $this->load->helper('url');
   	$this->load->view('view_student');
   }
 
