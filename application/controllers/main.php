@@ -33,19 +33,19 @@ class Main extends CI_Controller {
 
   public function login_validation(){
   	$this->load->library('form_validation');
-  	$this->form_validation->set_rules('login_roll_no','login_roll_no','required |xss_clean|trim|callback_validate_student');  
+  	$this->form_validation->set_rules('login_roll_no','Login Roll No','required |xss_clean|trim|callback_validate_student');  
   	//xss clean to prevent cross-site scripting
-  	$this->form_validation->set_rules('login_password','login_password','required |md5');  //add md5 afterwards
+  	$this->form_validation->set_rules('login_password','login_password','required |md5');  
 
   	//if validation successful
   	if($this->form_validation->run()){
   		$this->load->helper('url');     //to use redirect
-  		redirect('main/student');
+  		//redirect('main/student');
+      redirect('student');         //redirected to another controller
   	}else{
-  	  
       $this->load->helper('url');
-      redirect('http://localhost/CheckIn_System/');
-
+      redirect('http://localhost/CheckIn_System/',$data);
+      
   	}
 
   }
