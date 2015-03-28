@@ -42,7 +42,10 @@ class Main extends CI_Controller {
   		$this->load->helper('url');     //to use redirect
   		redirect('main/student');
   	}else{
-  		$this->load->view('view_login');
+  	  
+      $this->load->helper('url');
+      redirect('http://localhost/CheckIn_System/');
+
   	}
 
   }
