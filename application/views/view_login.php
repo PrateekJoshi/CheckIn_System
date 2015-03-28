@@ -43,7 +43,8 @@
                         <strong>   Student Login </strong>  
                             </div>
                             <div class="panel-body">
-                                <form role="form" method="POST" action="main/login_validation">
+                                <!--<form role="form" method="POST" action="main/login_validation">-->
+                                <?php echo form_open('main/login_validation'); ?>
 <br/>
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"  ></i></span>
@@ -57,7 +58,7 @@
                                      <input type="submit" class="btn btn-success"  name="register_button" value="Login" />
                                    </div>
                                    
-                                    </form>
+                                     <?php echo form_close(); ?>
                             </div>
                            
                         </div>
