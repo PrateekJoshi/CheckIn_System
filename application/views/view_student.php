@@ -72,10 +72,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><?php
-        $user_data = $this->session->userdata('email');
-        echo $user_data['user_data'][0]['name'];
-?></a>
+                <a class="navbar-brand" href="index.php">Students Panel</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -176,22 +173,22 @@
                     </div>
                     </div>
 
-                <div class="col-lg-3 col-md-6">
+               <!--   <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
                                     <i class="fa fa-group fa-5x"></i>
                                 </div>
-                               <!-- <div class="col-xs-9 text-right">
+                                <div class="col-xs-9 text-right">
                                     <div class="huge">Total users</div>
                                     <div>Total Users</div>
-                                </div>-->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
+                </div>-->
+                <div class="col-lg-5 col-md-6">
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
@@ -199,8 +196,8 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">Request Pending</div>
-                                    <div></div>
+                                    <div class="huge">0</div>
+                                    <div>Request Pending</div>
                                 </div>
                             </div>
                         </div>
