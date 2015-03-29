@@ -22,10 +22,11 @@ class Student extends CI_Controller {
   public function generate_profile(){
     $this->load->helper('url');
      $this->load->model('model_student');
-       /*$session_data=$this->model_student->get_session_data();
-       $user_data = array_merge($user_data, $session_data);
-       $this->session->set_userdata($user_data);   //new session with all details*/
-  	$this->load->view('view_student');
+      $user_data = $this->session->userdata('user_data');
+$user_data = $this->session->userdata('email');
+      $add_data=$this->model_student->get_session_data();
+      $this->session->set_userdata($add_data );
+  	  $this->load->view('view_student',$user_data);
   }
 
   public function logout()

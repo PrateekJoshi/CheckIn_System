@@ -18,7 +18,7 @@ public function can_login(){
 }
 
 public function get_session_data(){
-  $this->db->select("roll_no,name,email,year,semester,branch,parent_email"); 
+  $this->db->select("name,email,year,semester,branch,parent_email"); 
   $this->db->from('students');
   $this->db->where('roll_no',$this->session->userdata('roll_no'));
   $query = $this->db->get();

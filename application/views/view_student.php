@@ -1,4 +1,4 @@
-<?php echo $this->session->userdata['roll_no'];?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,7 +72,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Admin Panel</a>
+                <a class="navbar-brand" href="index.php"><?php
+        $user_data = $this->session->userdata('email');
+        echo $user_data['user_data'][0]['name'];
+?></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -163,7 +166,10 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"></div>
-                                    <div>Welcome  <?php echo $this->session->userdata['roll_no'];?></div>
+                                    <div>Welcome  <?php
+                                         $user_data = $this->session->userdata('0');
+                                         echo '<br>'.'<font size="5">'.$user_data->name.'</font>';
+                                         ?></div>
                                 </div>
                             </div>
                         </div>
@@ -177,10 +183,10 @@
                                 <div class="col-xs-3">
                                     <i class="fa fa-group fa-5x"></i>
                                 </div>
-                                <div class="col-xs-9 text-right">
+                               <!-- <div class="col-xs-9 text-right">
                                     <div class="huge">Total users</div>
                                     <div>Total Users</div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -193,8 +199,8 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">total ques</div>
-                                    <div>Total Questions</div>
+                                    <div class="huge">Request Pending</div>
+                                    <div></div>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +215,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">Date</div>
-                                    <div>Date</div>
+                                    <div><?php echo '<font size="4">'.date('Y-m-d').'</font>';?></div>
                                 </div>
                             </div>
 
