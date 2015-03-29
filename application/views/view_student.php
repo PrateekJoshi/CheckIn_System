@@ -50,13 +50,6 @@
 }
     </style>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
@@ -77,13 +70,73 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
+
                 <li class="dropdown">
                     
                     
                     <!-- /.dropdown-tasks -->
                 </li>
                 <!-- /.dropdown -->
+
+                
+
                
+               <!--Notifications dropdown-->
+               <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> Requests
+                                    <span class="pull-right text-muted small">See Requests</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i>Message
+                                    <span class="pull-right text-muted small">View Messages</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> See Assignments
+                                    <span class="pull-right text-muted small">View</span>
+                                </div>
+                            </a>
+                        </li>
+                       <!-- <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>-->
+
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                     <!--end Notifications dropdown-->
+                    <!-- /.dropdown-alerts -->
+                </li>
+
+
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -220,41 +273,11 @@
                         
                     </div>
                 </div>
-<div class="form-group" id="area" style="display:none">
-  <label for="comment">Add Question:</label>
-  <form method="POST" action="index.php">
-  <textarea  class="form-control input-medium" rows="2" name="question" placeholder="Enter your Question" required></textarea><br>
-  Time: <input type="radio" name="radio1" value="25">25 sec &nbsp;&nbsp;&nbsp;
-<input type="radio" name="radio1" value="35">35 sec  &nbsp;&nbsp;&nbsp;
-<input type="radio" name="radio1" value="45">45 sec &nbsp;&nbsp;&nbsp;
-<input type="radio" name="radio1" value="60">60 sec &nbsp;&nbsp;&nbsp;
-<br><br>
-  <textarea class="form-control input-small"  rows="1" name="opt1" placeholder="Option 1" required></textarea><br>
-  <textarea class="form-control input-small"  rows="1" name="opt2" placeholder="Option 2" required></textarea><br>
-   <textarea class="form-control input-small"  rows="1" name="opt3" placeholder="Option 3" ></textarea><br>
-    <textarea class="form-control input-small"  rows="1" name="opt4" placeholder="Option 4" ></textarea><br><br>
-    Answer (option): <input type="radio" name="radio3" value="1">1&nbsp;&nbsp;&nbsp;
-<input type="radio" name="radio3" value="2">2 &nbsp;&nbsp;&nbsp;
-<input type="radio" name="radio3" value="3">3&nbsp;&nbsp;&nbsp;
-<input type="radio" name="radio3" value="4">4 &nbsp;&nbsp;&nbsp;
-<br><br>
 
-
-      <textarea class="form-control input-small"  rows="1" name="cat" placeholder="Category" required></textarea><br>
-         Points: <input type="radio" name="radio2" value="15">15&nbsp;&nbsp;&nbsp;
-<input type="radio" name="radio2" value="35">25  &nbsp;&nbsp;&nbsp;
-<input type="radio" name="radio2" value="35">35  &nbsp;&nbsp;&nbsp;
-<input type="radio" name="radio2" value="40">45  &nbsp;&nbsp;&nbsp;
-<br><br>
-  <input type="submit" class="btn btn-success" name="add_ques" style="text-align:center" value="Add Question" />
-  </form>
-</div>
             </div>
            
         </div>
-        <!-- /#page-wrapper -->
-
-    </div>
+  
     <!-- /#wrapper -->
 
     <!-- jQuery -->
@@ -275,6 +298,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url('assets/dist/js/sb-admin-2.js'); ?>"></script>
     <!--Text area show-->
+
 
 </body>
 
