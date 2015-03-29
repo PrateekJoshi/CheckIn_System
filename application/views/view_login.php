@@ -9,7 +9,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>IEEE-WOMEN |Registration</title>
+    <title>Check-In|Login</title>
     <!-- BOOTSTRAP CORE STYLE CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLE CSS -->
@@ -53,7 +53,7 @@
                                             <input type="text" name="login_roll_no" class="form-control" placeholder="Roll Number" required/>
                                         </div>
                                      <div class="form-group input-group">
-                                            <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
                                             <input type="password" name="login_password" class="form-control" placeholder="Password" required/>
                                         </div>
                                        <div style="text-align:center;">  

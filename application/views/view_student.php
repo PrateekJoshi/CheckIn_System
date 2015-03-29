@@ -1,4 +1,4 @@
-<?php ?> 
+<?php echo $this->session->userdata['roll_no'];?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Panel</title>
+    <title>Student Panel</title>
 
     <!-- Bootstrap Core CSS -->
     
@@ -38,7 +38,17 @@
 
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
 
-
+  <style type="text/css">
+#message {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    width: 100%;
+}
+#inner-message {
+    margin: 1 auto;
+}
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -85,7 +95,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="../../logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="<?php echo 'student/logout' ;?>"><i class="fa fa-sign-out fa-fw"></i>Logout</a>  <!--to call logout func in student controller-->
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -140,7 +150,9 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+
             <div class="row">
+
 
 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-red">
@@ -150,14 +162,13 @@
                                     <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">Student Name</div>
-                                    <div>Welcome</div>
+                                    <div class="huge"></div>
+                                    <div>Welcome  <?php echo $this->session->userdata['roll_no'];?></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     </div>
-
 
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
@@ -239,34 +250,28 @@
            
         </div>
         <!-- /#page-wrapper -->
-        <!--ajax tst-->
-<form method="POST" action="index.php" style="display:none; margin-top:0px;"  id="area2">
-  <input type="text"  class="form-control input-medium" name="user_delete" placeholder="User Name" required></textarea><br>
-  <input type="submit" class="btn btn-success" name="add_ques" style="text-align:center" value="Delete User" />
-  </form>
-        <!--end test-->
 
     </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+      <script src="<?php echo base_url('assets/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+     <script src="<?php echo base_url('assets/bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="assets/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+     <script src="<?php echo base_url('assets/bower_components/metisMenu/dist/metisMenu.min.js'); ?>"></script>
+
 
     <!-- Morris Charts JavaScript -->
-    <script src="assets/bower_components/raphael/raphael-min.js"></script>
-    <script src="assets/bower_components/morrisjs/morris.min.js"></script>
-    <script src="assets/js/morris-data.js"></script>
+    <script src="<?php echo base_url('assets/bower_components/raphael/raphael-min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bower_components/morrisjs/morris.min.js'); ?>"></script>
+     <script src="<?php echo base_url('assets/js/morris-data.js'); ?>"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="assets/dist/js/sb-admin-2.js"></script>
+    <script src="<?php echo base_url('assets/dist/js/sb-admin-2.js'); ?>"></script>
     <!--Text area show-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
 </body>
 

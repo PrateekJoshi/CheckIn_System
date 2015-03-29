@@ -39,12 +39,17 @@ class Main extends CI_Controller {
 
   	//if validation successful
   	if($this->form_validation->run()){
+      $user_data=array(
+        'roll_no'=>$this->input->post('login_roll_no'),
+        'is_logged_in'=>1
+        );
+      $this->session->set_userdata($user_data);
   		$this->load->helper('url');     //to use redirect
   		//redirect('main/student');
-      redirect('student');         //redirected to another controller
+      redirect('student',$user_data);         //redirected to another controller
   	}else{
       $this->load->helper('url');
-      redirect('http://localhost/CheckIn_System/',$data);
+      redirect('http://localhost/CheckIn_System/');
       
   	}
 
@@ -53,6 +58,7 @@ class Main extends CI_Controller {
   public function validate_student(){
   	$this->load->model('model_student');
   	if($this->model_student->can_login()){
+      
   		return true;
   	}else{
   		$this->form_validation->set_message('validate_student','Incorrect email or password');
