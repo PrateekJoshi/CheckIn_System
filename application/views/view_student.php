@@ -171,13 +171,13 @@
                     <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<i class="fa fa-bars fa-fw" id="main_icon"></i></a></li>
                 </ul>
                 <ul class="sidebar-nav" id="sidebar">     
-                    <li><a href="#">Job Sector<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
-                    <li><a href="#">Company Name<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
-                    <li><a href="#">Job Designation<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>                  
-                    <li><a href="#">Current Location<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
-                    <li><a href="#">Salary<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
-                    <li><a href="#">Experience<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
-                    <li><a href="#">Qualification Required<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                    <li><a href="#">See assignments<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+          <li id="leave_status_btn"><a href="#">Leave application status<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                <li id="leave_btn"><a href="#">Apply for leave<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                    <li><a href="#">Send Message<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>                
+                    <li><a href="#">History<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                    <li><a href="#">Announcements<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                    
                 </ul>
             </div>
           
@@ -256,16 +256,16 @@
                     </div>
                 </div>
 
-                                    <h2 class="sub-header">Section title</h2>
-                                    <div class="table-responsive">
+                                   <h2  class="sub-header"><div id="event">Notifcations</div></h2>
+                                   <div id="notf_display">
+                                    <div class="table-responsive" id="apply_status">
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
-                                                    <th>Header</th>
-                                                    <th>Header</th>
-                                                    <th>Header</th>
-                                                    <th>Header</th>
+                                                    <th>S.No</th>
+                                                    <th>Notification</th>
+                                                    <th>Status</th>
+                                                
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -279,23 +279,10 @@
                                                     <td>adipiscing</td>
                                                     <td>elit</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>1,002</td>
-                                                    <td>amet</td>
-                                                    <td>consectetur</td>
-                                                    <td>adipiscing</td>
-                                                    <td>elit</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1,002</td>
-                                                    <td>amet</td>
-                                                    <td>consectetur</td>
-                                                    <td>adipiscing</td>
-                                                    <td>elit</td>
-                                                </tr>
                                                   
                                             </tbody>
                                         </table>
+                                    </div>
                                     </div>
                                 </div>                             
                                 <div class="col-md-1"></div>
@@ -333,5 +320,10 @@
                 $("#wrapper").toggleClass("active");
             });
         </script>
+
+        <!--My jquery-->
+  <script src="<?php echo base_url('assets/js/apply_leave.js'); ?>"></script>   
+
+        <!--end-->
     </body>
 </html>
