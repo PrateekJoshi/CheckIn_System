@@ -1,63 +1,27 @@
 
-<!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- <meta name="description" content="">
+        <meta name="author" content=""> -->
+        <link rel="icon" href="./favicon.ico">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/font-awesome.min.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/dashboard.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/sidebar.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/sb-admin-2.css'); ?>">
 
-<head>
+        <title>Student Panel | CheckIn & CheckOut</title>
+    </head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Student Panel</title>
-
-    <!-- Bootstrap Core CSS -->
-    
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
-
-    <!-- MetisMenu CSS -->
-   
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bower_components/metisMenu/dist/metisMenu.min.css'); ?>">
-
-    <!-- Timeline CSS -->
-
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/timeline.css'); ?>">
-
-    <!-- Custom CSS -->
-  
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/sb-admin-2.css'); ?>">
-
-    <!-- Morris Charts CSS -->
-   
-     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bower_components/morrisjs/morris.css'); ?>">
-
-    <!-- Custom Fonts -->
-   
-     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bower_components/morrisjs/morris.css'); ?>">
-
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
-
-  <style type="text/css">
-#message {
-    position: fixed;
-    top: 40px;
-    left: 0;
-    width: 100%;
-}
-#inner-message {
-    margin: 1 auto;
-}
-    </style>
-
-</head>
-
-<body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <body>
+        <!-- Navbar here -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -65,24 +29,62 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Students Panel</a>
+                <a class="navbar-brand icon-bar-vertical" href="#">&nbsp;<i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Students Panel&nbsp;</a>
             </div>
-            <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">  
+                 <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>Read All Messages</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
 
-                <li class="dropdown">
-                    
-                    
-                    <!-- /.dropdown-tasks -->
-                </li>
-                <!-- /.dropdown -->
-
-                
-
-               
-               <!--Notifications dropdown-->
-               <li class="dropdown">
+                    <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
@@ -90,18 +92,8 @@
                         <li>
                             <a href="#">
                                 <div>
-                                    <i class="fa fa-comment fa-fw"></i> Requests
-                                    <span class="pull-right text-muted small">See Requests</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i>Message
-                                    <span class="pull-right text-muted small">View Messages</span>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
                                 </div>
                             </a>
                         </li>
@@ -109,12 +101,30 @@
                         <li>
                             <a href="#">
                                 <div>
-                                    <i class="fa fa-tasks fa-fw"></i> See Assignments
-                                    <span class="pull-right text-muted small">View</span>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
                                 </div>
                             </a>
                         </li>
-                       <!-- <li class="divider"></li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
                         <li>
                             <a href="#">
                                 <div>
@@ -122,8 +132,7 @@
                                     <span class="pull-right text-muted small">4 minutes ago</span>
                                 </div>
                             </a>
-                        </li>-->
-
+                        </li>
                         <li class="divider"></li>
                         <li>
                             <a class="text-center" href="#">
@@ -132,13 +141,11 @@
                             </a>
                         </li>
                     </ul>
-                     <!--end Notifications dropdown-->
                     <!-- /.dropdown-alerts -->
-                </li>
 
 
-                <!-- /.dropdown -->
-                <li class="dropdown">
+
+                     <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
@@ -153,61 +160,36 @@
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search User">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#" id="popup"><i class="fa fa-bar-chart-o fa-fw"></i>Add Question</a>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#" id="opt"><i class="fa fa-table fa-fw"></i>Top Achievers</a>
-                        </li>
-                        <li>
-                            <a href="#" id="popup_delete"><i class="fa fa-trash fa-fw"></i>Delete a User</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-user-md fa-fw"></i>Create a Admin</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
+                    </li>
+                </ul>
             </div>
-            <!-- /.navbar-static-side -->
         </nav>
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
-                </div>
-                <!-- /.col-lg-12 -->
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <ul id="sidebar_menu" class="sidebar-nav">
+                    <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<i class="fa fa-bars fa-fw" id="main_icon"></i></a></li>
+                </ul>
+                <ul class="sidebar-nav" id="sidebar">     
+                    <li><a href="#">Job Sector<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                    <li><a href="#">Company Name<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                    <li><a href="#">Job Designation<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>                  
+                    <li><a href="#">Current Location<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                    <li><a href="#">Salary<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                    <li><a href="#">Experience<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                    <li><a href="#">Qualification Required<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                </ul>
             </div>
-            <!-- /.row -->
-
-            <div class="row">
-
-
-<div class="col-lg-3 col-md-6">
+          
+            <div id="page-content-wrapper">
+                <div class="page-content inset">
+                    <div class="row">                                                   
+                        <div class="col-md-12" style="background-color:#fff;margin-bottom:0px; margin-top: -10px;">
+                            <div class="row"> 
+                                <div class="col-md-1"></div>                  
+                                <div class="col-md-10">
+                                    <h1 class="page-header">Dashboard</h1>
+                                  <div class="col-lg-3 col-md-6">
                     <div class="panel panel-red">
                         <div class="panel-heading">
                             <div class="row">
@@ -274,38 +256,82 @@
                     </div>
                 </div>
 
+                                    <h2 class="sub-header">Section title</h2>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Header</th>
+                                                    <th>Header</th>
+                                                    <th>Header</th>
+                                                    <th>Header</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                                              
+                                               
+                                                <tr>
+                                                    <td>1,002</td>
+                                                    <td>amet</td>
+                                                    <td>consectetur</td>
+                                                    <td>adipiscing</td>
+                                                    <td>elit</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1,002</td>
+                                                    <td>amet</td>
+                                                    <td>consectetur</td>
+                                                    <td>adipiscing</td>
+                                                    <td>elit</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1,002</td>
+                                                    <td>amet</td>
+                                                    <td>consectetur</td>
+                                                    <td>adipiscing</td>
+                                                    <td>elit</td>
+                                                </tr>
+                                                  
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>                             
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>                                              
+                    </div>
+                </div>
             </div>
-           
         </div>
-  
-    <!-- /#wrapper -->
 
-    <!-- jQuery -->
-      <script src="<?php echo base_url('assets/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
+        <footer>
+            <div class="container-fluid" style="background-color:#2F3034">
+                <div class="row">
+                    <center>
+                    <br>
+                    <div class="col-md-6" >
+                        <p style="color:white;">Designed & Developed by NOT-IEEE</p> 
+                    </div>
+                    <div class="col-md-6">
+                      <p style="color:white;">Contact Webmasters</p> 
+                    <br><br>
+                    </div>
+                    </center>
+                </div>
+            </div>
+        </footer> 
 
-    <!-- Bootstrap Core JavaScript -->
-     <script src="<?php echo base_url('assets/bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-     <script src="<?php echo base_url('assets/bower_components/metisMenu/dist/metisMenu.min.js'); ?>"></script>
-
-
-    <!-- Morris Charts JavaScript -->
-    <script src="<?php echo base_url('assets/bower_components/raphael/raphael-min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/bower_components/morrisjs/morris.min.js'); ?>"></script>
-     <script src="<?php echo base_url('assets/js/morris-data.js'); ?>"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="<?php echo base_url('assets/dist/js/sb-admin-2.js'); ?>"></script>
-    <!--Text area show-->
-
-
-</body>
-
+        
+           <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script type="text/javascript">
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("active");
+            });
+        </script>
+    </body>
 </html>
-
-
-
-
-
-<!--End-->
