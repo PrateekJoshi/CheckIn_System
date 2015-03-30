@@ -171,9 +171,25 @@
                     <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<i class="fa fa-bars fa-fw" id="main_icon"></i></a></li>
                 </ul>
                 <ul class="sidebar-nav" id="sidebar">     
-                    <li><a href="#">See assignments<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
-          <li id="leave_status_btn"><a href="#">Application status<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
-                <li id="leave_btn"><a href="#">Appication to warden<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                     <li><a href="#">See assignments<i class="fa fa-book fa-fw sub_icon"></i></a></li>
+                    <li id="leave_status_btn"><a href="#">Leave application status<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>
+                    <li id="" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Application Form<i class="fa fa-sign-out fa-fw sub_icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a id="leave_btn" href="#">For leave</a>
+                            </li>
+                            <li>
+                                <a href="#">For hostel change</a>
+                            </li>
+                            <li>
+                                <a href="#">Complaint</a>
+                            </li>
+                            <li>
+                                <a href="#">Other</a>
+                            </li>  
+                        </ul>
+                    </li>
+
                 <!--try-->
                 
 

@@ -6,7 +6,8 @@
     '<option value="it">Mr.Pradeep Garg</option>'+
     '<option value="cse">Dr.Neelkanth</option>'+
   '</select>'+'<br>'+'<label>'+'<input type="text" class="form-control" placeholder="Going to">'+'<br>'+
-'<input type="text" class="form-control" placeholder="Number of Days">'+'<br>'+
+ '<label>'+'From date:'+'</label>'+'<input type="date" class="form-control" placeholder="From ">'+'<br>'+
+ '<label>'+'To date:'+'</label>'+'<input type="date" class="form-control" placeholder="to">'+'<br>'+
 '<textarea name="message" id="message" required="required" name="message" class="form-control" rows="8"  placeholder="Any other info">'+'</textarea>'+'<br>'+
     '<input type="submit" class="btn btn-info" name="btn_register" value="Apply">'+
 '</form>';
