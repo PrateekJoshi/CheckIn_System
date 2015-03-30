@@ -172,8 +172,12 @@
                 </ul>
                 <ul class="sidebar-nav" id="sidebar">     
                     <li><a href="#">See assignments<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
-          <li id="leave_status_btn"><a href="#">Leave application status<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
-                <li id="leave_btn"><a href="#">Apply for leave<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+          <li id="leave_status_btn"><a href="#">Application status<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                <li id="leave_btn"><a href="#">Appication to warden<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                <!--try-->
+                
+
+                <!--end-->
                     <li><a href="#">Send Message<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>                
                     <li><a href="#">History<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
                     <li><a href="#">Announcements<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
@@ -200,7 +204,7 @@
                                     <div class="huge"></div>
                                     <div>Welcome  <?php
                                          $user_data = $this->session->userdata('0');
-                                         echo '<br>'.'<font size="5">'.$user_data->name.'</font>';
+                                         echo '<br>'.'<font size="5">'.$user_data->student_name.'</font>';
                                          ?></div>
                                 </div>
                             </div>

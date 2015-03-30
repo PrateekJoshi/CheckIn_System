@@ -15,7 +15,7 @@
 
 
  $("#leave_status_btn").click(function(e) {
-        $("#event").text('Leave Application Status');
+        $("#event").text('Application Status');
                var_table= '<div class="table-responsive" id="apply_status">'+
                                         '<table class="table table-striped">'+
                                             '<thead>'+
