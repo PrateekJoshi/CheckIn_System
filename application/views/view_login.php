@@ -65,10 +65,80 @@
                            
                         </div>
                     </div>
+
                 
                 
         </div>
+        <div class="row  pad-top">
+               
+                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                        <strong>  Warden Login </strong>  
+                            </div>
+                            <div class="panel-body">
+                                <?php echo form_open('warden/login_validation'); ?>
+                                <?php echo validation_errors(); ?>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"  ></i></span>
+                                            <input type="text" name="login_warden_code" class="form-control" placeholder="Warden code" required/>
+                                        </div>
+                                     <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+                                            <input type="password" name="login_warden_password" class="form-control" placeholder="Password" required/>
+                                        </div>
+                                       <div style="text-align:center;">  
+                                     <input type="submit" class="btn btn-success"  name="warden_login_btn" value="Login" />
+                                   </div>
+                                   
+                               <?php echo form_close(); ?>
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                
+                
+        </div>
+        <div class="row  pad-top">
+               
+                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                        <strong>Guard Login</strong>  
+                            </div>
+                            <div class="panel-body">
+                   
+                                <?php echo form_open('guard/login_validation'); ?>
+                                <?php echo validation_errors(); ?>
+<br/>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"  ></i></span>
+                                            <input type="text" name="login_guard_code" class="form-control" placeholder="Guard code" required/>
+                                        </div>
+                                     <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+                                            <input type="password" name="login_guard_code" class="form-control" placeholder="Guard Password" required/>
+                                        </div>
+                                       <div style="text-align:center;">  
+                                     <input type="submit" class="btn btn-success"  name="login_guard_btn" value="Login" />
+                                   </div>
+                                   
+                                     <?php echo form_close(); ?>
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                
+                
+        </div>
+
+
+
+        
     </div>
+
     
 
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->

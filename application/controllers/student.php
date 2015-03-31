@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
+ini_set('display_errors', 1);
 
 class Student extends CI_Controller {
 
@@ -45,6 +45,23 @@ class Student extends CI_Controller {
     
    //if validation successful
     if($this->form_validation->run()){
+       $user_data = $this->session->userdata('0');       //all code below to send email to the student
+       $email_to=$user_data->student_email;
+       $leave_going_to=$this->input->post('leave_going_to');
+       $leave_going_date=$this->input->post('leave_going_date');
+       $leave_going_till_date=$this->input->post('leave_going_till_date');
+       $email_message="Your application for leave to ".$leave_going_to." from ".$leave_going_date." to ".
+       $leave_going_till_date." has been submitted.";
+
+
+      $this->load->library('email');
+      $this->email->from('kumarkartik1507@gmail.com', 'Prateek');
+      $this->email->to($email_to); 
+      $this->email->subject('Check-In JUIT:Application Submited');
+      $this->email->message($email_message);  
+      $this->email->send();
+
+      echo $this->email->print_debugger();
        $this->load->helper('url');
        redirect('http://localhost/CheckIn_System/index.php/student');
     }else{
