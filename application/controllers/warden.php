@@ -41,7 +41,8 @@ public function login_validation(){
 
   public function warden_validation(){
   	$this->load->model('model_warden');
-  	if($this->model_warden->can_login()){     
+  	if($this->model_warden->can_login()){
+  	     $this->see_requests();     
   		return true;
   	}else{
   		$this->form_validation->set_message('validate_student','Incorrect email or password');
@@ -49,6 +50,26 @@ public function login_validation(){
 
   	}
 
+  }
+
+  public function logout()
+  {
+    $user_data = $this->session->all_userdata();
+        foreach ($user_data as $key => $value) {
+            if ($key != 'session_id' && $key != 'ip_address' && $key != 'user_agent' && $key != 'last_activity') {
+                $this->session->unset_userdata($key);
+            }
+        }
+    $this->session->sess_destroy();
+    $this->load->helper('url');
+    $this->load->view('view_restricted');
+  }
+
+  public function see_requests(){
+  	$this->load->model('model_warden');
+  	$result['app']= $this->model_warden->fetch_applications();
+  	$this->load->helper('url');
+  	$this->load->view('view_warden',$result);
   }
 
 
