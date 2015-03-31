@@ -33,16 +33,15 @@ public function login_validation(){
   $this->load->model('model_warden');
   $user_data=$this->model_warden->get_session_data();
   $this->session->set_userdata($user_data);
-   $this->load->helper('url');
-   $this->load->view('view_warden',$user_data);
-    
+   //$this->load->helper('url');
+   //$this->load->view('view_warden',$user_data);
+   $this->see_requests();
   }
 
 
   public function warden_validation(){
   	$this->load->model('model_warden');
-  	if($this->model_warden->can_login()){
-  	     $this->see_requests();     
+  	if($this->model_warden->can_login()){     
   		return true;
   	}else{
   		$this->form_validation->set_message('validate_student','Incorrect email or password');
