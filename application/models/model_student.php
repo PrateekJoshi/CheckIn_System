@@ -25,4 +25,35 @@ public function get_session_data(){
   return $query->result();
 }
 
+public function can_send_leave($roll_no){
+	$warden_code=$this->input->post('leave_warden');
+    $leave_going_to=$this->input->post('leave_going_to');
+    $leave_going_date=$this->input->post('leave_going_date');
+    $leave_going_till_date=$this->input->post('leave_going_till_date');
+    $leave_other_info=$this->input->post('leave_other_info');
+    //$roll_no=$this->session->userdata['roll_no'];
+
+    $data = array(
+          'leave_from_roll_no'=>$roll_no,
+          'leave_warden_code'=>$warden_code,
+          'leave_going_to'=>$leave_going_to,
+          'leave_from_date'=>$leave_going_date,
+          'leave_till_date'=>$leave_going_till_date,
+          'leave_other_info'=>$leave_other_info,
+          'leave_date_submit'=>date('Y-m-d'),
+          'leave_date_status_change'=>"",
+          'leave_status'=>-1,
+          'leave_msg_from_warden'=>"",
+          'leave_seen'=>-1
+
+);
+	$query=$this->db->insert('leave_application',$data);
+	if($query)
+		return true;
+	else
+		return false;
+
+}
+
+
 }
