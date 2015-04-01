@@ -55,5 +55,13 @@ public function can_send_leave($roll_no){
 
 }
 
+public function get_request($roll){
+   $this->db->select("leave_warden_code,leave_going_to,leave_from_date,leave_till_date,leave_other_info,leave_date_submit,leave_seen,leave_status"); 
+   $this->db->from('leave_application');
+   $this->db->where('leave_from_roll_no',$this->session->userdata('roll_no'));
+   $query = $this->db->get();
+  return $query->result();
+
+}
 
 }

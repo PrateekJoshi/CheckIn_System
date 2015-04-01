@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-ini_set('display_errors', 1);
+
 
 class Student extends CI_Controller {
 
@@ -30,7 +30,8 @@ class Student extends CI_Controller {
       //$user_data = $this->session->userdata('user_data');
       $user_data=$this->model_student->get_session_data();
       $this->session->set_userdata($user_data);
-  	  $this->load->view('view_student',$user_data);
+      $result['leave_req']=$this->leave_request();
+  	  $this->load->view('view_student',$result);
   }
 
   public function apply_leave_validation(){
@@ -95,6 +96,12 @@ public function validate_leave(){
       return false;
 
     }
+}
+
+public function leave_request(){
+  $this->load->model('model_student');
+  $req_pending=$this->model_student->get_request($this->session->userdata('student_roll_no'));
+  return $req_pending;
 }
 
 

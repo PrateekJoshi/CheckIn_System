@@ -1,3 +1,4 @@
+
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -144,10 +145,13 @@
                     </li>
 
                     <li class="active dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;First_Name_of_User&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp; <?php
+                                         $user_data = $this->session->userdata('0');
+                                         echo $user_data->student_name;
+                                         ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                         <!-- name of the user here.... -->
                         <ul class="dropdown-menu">
-                            <li class="dropdown-header">Admin</li>
+                            <li class="dropdown-header"></li>
                             <li>
                                 <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
@@ -201,8 +205,9 @@
                                                     <div class="col-xs-9 text-right">
                                                         <div class="huge"></div>
                                                         <div>Welcome  <?php
-                                                            $user_data = $this->session->userdata('0');
-                                                            echo '<br>'.'<font size="5">'.$user_data->name.'</font>';?>
+                                         $user_data = $this->session->userdata('0');
+                                         echo '<br>'.'<font size="5">'.$user_data->student_name.'</font>';
+                                         ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -243,26 +248,44 @@
                                     </div>
 
                                     <h3 class="sub-header"><div id="event">Notifcations</div></h3>
-                                    <div id="notf_display">
+                                    <div >
                                         <div class="table-responsive" id="apply_status">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>S.No</th>
-                                                        <th>Notification</th>
-                                                        <th>Status</th>                                                    
-                                                    </tr>
-                                                </thead>
-                                                <tbody>                                                                                                                                         
-                                                    <tr>
-                                                        <td>1,002</td>
-                                                        <td>amet</td>
-                                                        <td>consectetur</td>
-                                                        <td>adipiscing</td>
-                                                        <td>elit</td>
-                                                    </tr>                                                      
-                                                </tbody>
-                                            </table>
+                                             <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                   <th>S.No</th>
+                                                    <th>Going To</th>
+                                                    <th>From Date</th>
+                                                    <th>To Date </th>
+                                                    <th>Message</th>
+                                                    <th>Seen</th>
+                                                    <th>Status</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php
+                                               $count=0;
+                                               foreach($leave_req as $row){
+                                                $count=$count+1;
+                                                echo '<tr>'.
+                                                    '<td>'.$count.'</td>'.
+                                                    '<td>'.$row->leave_going_to.'</td>'.
+                                                    '<td>'.$row->leave_from_date.'</td>'.
+                                                    '<td>'.$row->leave_till_date.'</td>'.
+                                                    '<td>'.$row->leave_other_info.'</td>'.
+                                                    '<td>'.$row->leave_status.'</td>';
+                                                    '<td>'.$row->leave_seen.'</td>'.
+                                                    '</tr>';
+
+                                               }  
+
+
+                                               ?>
+                                                
+                                                  
+                                            </tbody>
+                                        </table>
                                         </div>
                                     </div>
                                 </div>                             

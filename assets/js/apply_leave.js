@@ -1,6 +1,6 @@
 $("#leave_btn").click(function(e) {
     $("#event").text('Apply for Leave');
-        var_form =  '<div class="row">'+
+        var_form =  '<div class="row" id="notf_display">'+
                         '<div class="col-md-3">'+'</div>'+
                         '<div class="col-md-6">'+
                             '<form class="form-horizontal" action="login.php" method="post">'+
@@ -74,23 +74,43 @@ $("#notf_display").html(var_form);
 
 $("#leave_status_btn").click(function(e) {
     $("#event").text('Leave Application Status');
-        var_table= '<div class="table-responsive" id="apply_status">'+
-                        '<table class="table table-striped">'+
-                            '<thead>'+
-                                '<tr>'+
-                                    '<th>S.No</th>'+
-                                    '<th>Notification</th>'+
-                                    '<th>Status</th>'+            
-                                '</tr>'+
-                            '</thead>'+
-                            '<tbody>'+                
-                                '<tr>'+
-                                    '<td>1,002</td>'+
-                                    '<td>'+'amet'+'</td>'+
-                                    '<td>'+'consectetur'+'</td>'+                
-                                '</tr>'+                    
-                            '</tbody>'+
-                        '</table>'+
-                    '</div>';
+        var_table= '<div class="table-responsive" id="notf_display">'+
+                                             '<table class="table table-striped">'+
+                                           '<thead>'+
+                                                '<tr>'+
+                                                   '<th>S.No</th>'+
+                                                    '<th>Going To</th>'+
+                                                    '<th>From Date</th>'+
+                                                    '<th>To Date </th>'+
+                                                    '<th>Message</th>'+
+                                                    '<th>Seen</th>'+
+                                                    '<th>Status</th>'+
+                                                
+                                                '</tr>'+
+                                            '</thead>'+
+                                            '<tbody>'+
+                                               '<?php
+                                               $count=0;
+                                               foreach($leave_req as $row){
+                                                $count=$count+1;
+                                                echo'+ '\'<tr>\''+'.'+
+                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
+                                                    '</tr>'+';'+
+
+                                               '}'+  
+
+
+                                               '?>'+
+                                                
+                                                  
+                                            '</tbody>'+
+                                         '</table>'+
+                                         '</div>';
 $("#notf_display").html(var_table);
 });
