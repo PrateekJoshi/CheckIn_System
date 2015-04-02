@@ -1,4 +1,3 @@
-
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -174,7 +173,7 @@
                 <div class="sidebar-nav" id="sidebar">     
                     <li><a href="#" data-parent="#sidebar">See assignments<i class="fa fa-book fa-fw sub_icon"></i></a></li>
                     <li id="leave_status_btn"><a href="#" data-parent="#sidebar">Leave application status<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>
-                    <li id="leave_btn"><a href="#demo3" data-toggle="collapse" data-parent="#sidebar">Application Form<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
+                    <li id="#"><a href="#demo3" data-toggle="collapse" data-parent="#sidebar">Application Form<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
                         <div class="collapse" id="demo3">
                             <li id="leave_btn"><a href="#" >For leave</a></li>
                             <li><a href="#" >For hostel change</a></li>
@@ -249,7 +248,6 @@
 
                                     <h3 class="sub-header"><div id="event">Notifcations</div></h3>
                                     <div id="notf_display">
-                                    <div id="notf_display2">
                                         <div class="table-responsive" id="apply_status">
                                              <table class="table table-striped">
                                             <thead>
@@ -275,13 +273,10 @@
                                                     '<td>'.$row->leave_from_date.'</td>'.
                                                     '<td>'.$row->leave_till_date.'</td>'.
                                                     '<td>'.$row->leave_other_info.'</td>'.
-                                                    '<td>'.$row->leave_status.'</td>';
-                                                    '<td>'.$row->leave_seen.'</td>'.
+                                                    '<td>'.$row->leave_seen.'</td>';
+                                                    '<td>'.$row->leave_status.'</td>'.
                                                     '</tr>';
-
                                                }  
-
-
                                                ?>
                                                 
                                                   
@@ -289,7 +284,7 @@
                                         </table>
                                         </div>
                                     </div>
-                                    </div>
+                                    
                                 </div>                             
                                 <div class="col-md-1"></div>
                             </div>
@@ -308,6 +303,7 @@
                 $("#wrapper").toggleClass("active");
             });
         </script>
-        <script src="<?php echo base_url('assets/js/apply_leave.js'); ?>"></script>   
+        <script src="<?php echo base_url('assets/js/student_apply_leave.js'); ?>"></script>  
+        <script src="<?php echo base_url('assets/js/student_show_leave.js'); ?>"></script>   
     </body>
 </html>

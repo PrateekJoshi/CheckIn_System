@@ -37,7 +37,8 @@ class Student extends CI_Controller {
   public function apply_leave_validation(){
     
     $this->load->library('form_validation');
-    $this->form_validation->set_rules('leave_warden','Select Warden','required |xss_clean|trim|callback_validate_leave');
+    $this->form_validation->set_rules('leave_warden_code','Select Warden','required |xss_clean|trim|callback_validate_leave');
+    $this->form_validation->set_rules('leave_hostel_no','Hostel No','required |xss_clean|trim');
     $this->form_validation->set_rules('leave_going_to','Going to','required |xss_clean|trim');
     $this->form_validation->set_rules('leave_going_date','Going date','required |xss_clean|trim');
     $this->form_validation->set_rules('leave_going_till_date','Going Till date','required |xss_clean|trim');
@@ -56,7 +57,7 @@ class Student extends CI_Controller {
 
 
       $this->load->library('email');
-      $this->email->from('kumarkartik1507@gmail.com', 'Prateek');
+      $this->email->from('joshi.prateek15@gmail.com', 'Prateek');
       $this->email->to($email_to); 
       $this->email->subject('Check-In JUIT:Application Submited');
       $this->email->message($email_message);  
