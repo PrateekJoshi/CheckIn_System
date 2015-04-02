@@ -1,6 +1,6 @@
 $("#leave_btn").click(function(e) {
     $("#event").text('Apply for Leave');
-        var_form =  '<div class="row" id="notf_display">'+
+        var_form =  '<div class="row">'+
                         '<div class="col-md-3">'+'</div>'+
                         '<div class="col-md-6">'+
                             '<form class="form-horizontal" action="login.php" method="post">'+
@@ -68,13 +68,14 @@ $("#leave_btn").click(function(e) {
                             '</form>'+
                         '</div>'+
                         '<div class="col-md-3">'+'</div>'+
-                    '</div>';               
+                    '</div>';    
+                                  
 $("#notf_display").html(var_form);
 });
 
 $("#leave_status_btn").click(function(e) {
     $("#event").text('Leave Application Status');
-        var_table= '<div class="table-responsive" id="notf_display">'+
+        var_table= '<div class="table-responsive">'+
                                              '<table class="table table-striped">'+
                                            '<thead>'+
                                                 '<tr>'+
@@ -95,12 +96,12 @@ $("#leave_status_btn").click(function(e) {
                                                 $count=$count+1;
                                                 echo'+ '\'<tr>\''+'.'+
                                                     '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
-                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
-                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
-                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
-                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
-                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
-                                                    '\'<td>\''+'.'+'$count'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$row->leave_going_to'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$row->leave_from_date'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$row->leave_till_date'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$row->leave_other_info'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$row->leave_status'+'.'+'\'</td>\''+'.'+
+                                                    '\'<td>\''+'.'+'$row->leave_seen'+'.'+'\'</td>\''+'.'+
                                                     '</tr>'+';'+
 
                                                '}'+  
@@ -111,6 +112,6 @@ $("#leave_status_btn").click(function(e) {
                                                   
                                             '</tbody>'+
                                          '</table>'+
-                                         '</div>';
+                                         '</div>';                                       
 $("#notf_display").html(var_table);
 });

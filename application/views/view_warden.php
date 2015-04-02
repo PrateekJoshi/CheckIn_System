@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/sidebar.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
 
-        <title>Student Panel | CheckIn & CheckOut</title>
+        <title>Warden Panel | CheckIn & CheckOut</title>
     </head>
 
     <body>
@@ -25,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">&nbsp;<i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Students Panel&nbsp;</a>
+                <a class="navbar-brand" href="#">&nbsp;<i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Warden Panel&nbsp;</a>
             </div>
 
             <div class="navbar-collapse collapse">
@@ -143,7 +143,11 @@
                     </li>
 
                     <li class="active dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;First_Name_of_User&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;<?php
+                                         $user_data = $this->session->userdata('0');
+                                         echo $user_data->warden_name;
+
+                                         ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                         <!-- name of the user here.... -->
                         <ul class="dropdown-menu">
                             <li class="dropdown-header">Admin</li>
@@ -152,7 +156,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="<?php echo 'student/logout' ;?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a> 
+                                <a href="<?php echo 'warden/logout' ;?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a> 
                                 <!--to call logout func in student controller-->
                             </li>
                         </ul>
@@ -198,8 +202,10 @@
                                                     <div class="col-xs-9 text-right">
                                                         <div class="huge"></div>
                                                         <div>Welcome  <?php
-                                                            $user_data = $this->session->userdata('0');
-                                                            echo '<br>'.'<font size="5">'.$user_data->name.'</font>';?>
+                                         $user_data = $this->session->userdata('0');
+                                         echo '<br>'.'<font size="5">'.$user_data->warden_name.'</font>';
+
+                                         ?>
                                                         </div>
                                                     </div>
                                                 </div>

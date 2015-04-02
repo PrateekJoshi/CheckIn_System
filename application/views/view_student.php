@@ -248,7 +248,8 @@
                                     </div>
 
                                     <h3 class="sub-header"><div id="event">Notifcations</div></h3>
-                                    <div >
+                                    <div id="notf_display">
+                                    <div id="notf_display2">
                                         <div class="table-responsive" id="apply_status">
                                              <table class="table table-striped">
                                             <thead>
@@ -287,6 +288,7 @@
                                             </tbody>
                                         </table>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>                             
                                 <div class="col-md-1"></div>
