@@ -273,7 +273,7 @@
                                                     '<td>'.$row->leave_from_date.'</td>'.
                                                     '<td>'.$row->leave_till_date.'</td>'.
                                                     '<td>'.$row->leave_other_info.'</td>'.
-                                                    '<td>'.$row->leave_seen.'</td>';
+                                                    '<td>'.$row->leave_seen.'</td>'.
                                                     '<td>'.$row->leave_status.'</td>'.
                                                     '</tr>';
                                                }  

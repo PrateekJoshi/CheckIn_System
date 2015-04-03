@@ -26,7 +26,7 @@ public function get_session_data(){
 }
 
 public function can_send_leave($roll_no){
-	$warden_code=$this->input->post('leave_warden');
+	$warden_code=$this->input->post('leave_warden_code');
     $leave_going_to=$this->input->post('leave_going_to');
     $leave_from_date=$this->input->post('leave_from_date');
     $leave_till_date=$this->input->post('leave_till_date');

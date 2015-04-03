@@ -1,3 +1,4 @@
+
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -16,6 +17,8 @@
     </head>
 
     <body>
+
+
         <!-- Navbar here -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
@@ -156,7 +159,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="<?php echo 'warden/logout' ;?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a> 
+                                <a href="<?php echo base_url().'index.php/warden/logout' ;?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a> 
                                 <!--to call logout func in student controller-->
                             </li>
                         </ul>
@@ -255,8 +258,10 @@
                                                     <th>From Roll No</th>
                                                     <th>From </th>
                                                     <th>To </th>
+                                                    <th>Hostel No </th>
                                                     <th>Other Info </th>
                                                     <th>Status </th>
+                                                    <th>Change Status</th>
                                                 
                                                 </tr>
                                             </thead>
@@ -270,8 +275,16 @@
                                                     '<td>'.$row->leave_from_roll_no.'</td>'.
                                                     '<td>'.$row->leave_from_date.'</td>'.
                                                     '<td>'.$row->leave_till_date.'</td>'.
+                                                    '<td>'.$row->leave_hostel_no.'</td>'.
                                                     '<td>'.$row->leave_other_info.'</td>'.
-                                                    '<td>'.$row->leave_status.'</td>';
+                                                    '<td>'.$row->leave_status.'</td>'.
+                                                    '<td>'
+                                                    .'<form action="approve_leave" method="post">'.
+                                                    '<input type="hidden" name="approve_leave_id" value='.'\''.$row->leave_id.'\''.'>'.
+                                                    '<input type="submit" name="approve_leave_status" class="btn btn-info btn-circle" value="Approve">'.
+                                                    '<input type="submit" name="approve_leave_status" class="btn btn-danger btn-circle" value="&nbsp;&nbsp;Reject&nbsp;&nbsp;">'.
+                                                     '</form>'.
+                                                     '</td>'.'</tr>';
                                                }  
                                                ?>
                                             </tbody>
@@ -299,3 +312,20 @@
         <script src="<?php echo base_url('assets/js/apply_leave.js'); ?>"></script>   
     </body>
 </html>
+<?php
+if(isset($status_update) OR isset($error_update)){
+   if(isset($status_update)){
+    echo '<script type="text/javascript">'.
+        'alert("Status updated");'.
+        '</script>';
+
+   }
+   if(isset($error_update)){
+     echo '<script type="text/javascript">'.
+        'alert("Unable to Update Status !!");'.
+        '</script>';
+   }
+
+}
+
+?>

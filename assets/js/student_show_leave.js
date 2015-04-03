@@ -27,7 +27,7 @@ $("#leave_status_btn").click(function(e) {
                                                     '\'<td>\''+'.'+'$row->leave_other_info'+'.'+'\'</td>\''+'.'+
                                                     '\'<td>\''+'.'+'$row->leave_seen'+'.'+'\'</td>\''+'.'+
                                                     '\'<td>\''+'.'+'$row->leave_status'+'.'+'\'</td>\''+'.'+
-                                                    '</tr>'+';'+
+                                                    '</tr>'+
 
                                                '}'+  
 
@@ -38,6 +38,6 @@ $("#leave_status_btn").click(function(e) {
                                             '</tbody>'+
                                          '</table>'+
                                          '</div>'; 
-                                                                               
+
 $("#notf_display").html(var_table);
 });
