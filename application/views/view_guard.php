@@ -265,12 +265,12 @@
 
 
                                     <div class="col-md-6">
-                                        <form action="find_student_roll" method="post">
+                                        <form action="<?php echo base_url('index.php/guard/find_student_name'); ?>" method="post">
                                         <div class="form-group">
                                         <div class="col-sm-7">
                                          <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"  ></i></span>
-                                            <input type="text" name="get_roll_no" class="form-control" placeholder="Student Name" required/>
+                                            <input type="text" name="get_name" class="form-control" placeholder="Student Name" required/>
                                         </div>
                                         <div style="text-align:center;">
                                         <input type="submit" class="btn btn-success"  name="login_guard_btn" value="Find" />
@@ -289,6 +289,7 @@
                                                 <tr>
                                                    <th>S.No</th>
                                                     <th>From Roll No</th>
+                                                    <th>Student Name</th>
                                                     <th>From </th>
                                                     <th>To </th>
                                                     <th>Hostel No </th>
@@ -307,6 +308,24 @@
                                                 echo '<tr>'.
                                                     '<td>'.$count.'</td>'.
                                                     '<td>'.$row->leave_from_roll_no.'</td>'.
+                                                    '<td>'.$row->leave_from_date.'</td>'.
+                                                    '<td>'.$row->leave_till_date.'</td>'.
+                                                    '<td>'.$row->leave_hostel_no.'</td>'.
+                                                     '<td>'.$row->leave_going_to.'</td>'.
+                                                    '<td>'.$row->leave_status.'</td>'.
+                                                     '</tr>';
+                                               }  
+                                           }
+                                               ?>
+                                                <?php
+                                               if(isset($get_student_name)){
+                                               $count=0;
+                                               foreach($get_student_name as $row){
+                                                $count=$count+1;
+                                                echo '<tr>'.
+                                                    '<td>'.$count.'</td>'.
+                                                    '<td>'.$row->leave_from_roll_no.'</td>'.
+                                                    '<td>'.$row->leave_student_name.'</td>'.
                                                     '<td>'.$row->leave_from_date.'</td>'.
                                                     '<td>'.$row->leave_till_date.'</td>'.
                                                     '<td>'.$row->leave_hostel_no.'</td>'.

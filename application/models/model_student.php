@@ -26,6 +26,9 @@ public function get_session_data(){
 }
 
 public function can_send_leave($roll_no){
+    $user_data = $this->session->userdata('0');
+    $leave_student_name=$user_data->student_name;
+
 	$warden_code=$this->input->post('leave_warden_code');
     $leave_going_to=$this->input->post('leave_going_to');
     $leave_from_date=$this->input->post('leave_from_date');
@@ -36,6 +39,7 @@ public function can_send_leave($roll_no){
 
     $data = array(
           'leave_from_roll_no'=>$roll_no,
+           'leave_student_name'=>$leave_student_name,
           'leave_warden_code'=>$warden_code,
           'leave_going_to'=>$leave_going_to,
           'leave_from_date'=>$leave_from_date,

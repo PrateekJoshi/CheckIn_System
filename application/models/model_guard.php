@@ -28,10 +28,20 @@ public function get_session_data(){
 public function get_student_roll_no(){
 	 $get_student_roll_no=$this->input->post('get_roll_no');
 	 $this->db->select("leave_id,leave_from_roll_no,leave_going_to,leave_from_date,leave_till_date,leave_hostel_no,leave_status");
-  $this->db->from('leave_application');
-  $this->db->where('leave_from_roll_no',$get_student_roll_no);
-  $query = $this->db->get();
-  return $query->result();
+    $this->db->from('leave_application');
+    $this->db->where('leave_from_roll_no',$get_student_roll_no);
+    $query = $this->db->get();
+    return $query->result();
+}
+
+public function get_student_name(){
+	 $get_student_name=$this->input->post('get_name');
+	 $this->db->select("leave_id,leave_from_roll_no,leave_student_name,leave_going_to,leave_from_date,leave_till_date,leave_hostel_no,leave_status");
+    $this->db->from('leave_application');
+    $this->db->like('leave_student_name', $get_student_name, 'both'); 
+    $query = $this->db->get();
+    return $query->result();
+
 }
 
 

@@ -68,6 +68,14 @@ public function find_student_roll(){
   	$this->load->view('view_guard',$result);
 }
 
+public function find_student_name(){
+	$this->load->model('model_guard');
+	$result['get_student_name']=$this->model_guard->get_student_name();
+	$this->load->helper('url');
+  	$this->load->view('view_guard',$result);
+
+}
+
 
 
 
