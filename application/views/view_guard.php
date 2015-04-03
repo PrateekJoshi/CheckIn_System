@@ -1,3 +1,4 @@
+
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -13,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
 
 
-        <title>Student Panel | CheckIn & CheckOut</title>
+        <title>Guard Panel | CheckIn & CheckOut</title>
     </head>
 
     <body>
@@ -26,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="active navbar-brand icon-bar-vertical" href="#">&nbsp;<i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Students Panel&nbsp;</a>
+                <a class="active navbar-brand icon-bar-vertical" href="#">&nbsp;<i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guard Panel&nbsp;</a>
             </div>
 
             <div class="navbar-collapse collapse">
@@ -143,7 +144,11 @@
                     </li>
 
                     <li class="active dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;First_Name_of_User&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;<?php
+                                         $user_data = $this->session->userdata('0');
+                                         echo $user_data->guard_name;
+
+                                         ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                         <!-- name of the user here.... -->
                         <ul class="dropdown-menu">
                             <li class="dropdown-header">Admin</li>
@@ -152,7 +157,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="<?php echo 'student/logout' ;?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a> 
+                                <a href="<?php echo base_url().'index.php/guard/logout' ;?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a> 
                                 <!--to call logout func in student controller-->
                             </li>
                         </ul>
@@ -161,52 +166,24 @@
             </div>
         </nav>
 
-        <div id="wrapper">
+
+       <div id="wrapper">
             <div id="sidebar-wrapper">
-                <ul id="sidebar_menu" class="sidebar-nav">
+                <div id="sidebar_menu" class="sidebar-nav">
                     <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<i class="fa fa-bars fa-fw" id="main_icon"></i></a></li>
-                </ul>
-                <ul class="sidebar-nav" id="sidebar">     
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Search<i class="fa fa-book fa-fw sub_icon"></i></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Enrollment No.</a>
-                            </li>
-                            <li>
-                                <a href="#">Name</a>
-                            </li>
-                            <li>
-                                <a href="#">Date</a>
-                            </li>
-                            <li>
-                                <a href="#">Year</a>
-                            </li>  
-                            <li>
-                                <a href="#">View all</a>
-                            </li> 
-                        </ul>
-                    </li>
-
-                    <li id="leave_status_btn" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">View list<i class="fa fa-file-text fa-fw sub_icon"></i></a></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Today</a>
-                            </li>
-                            <li>
-                                <a href="#">Last week</a>
-                            </li>
-                            <li>
-                                <a href="#">View all</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- <li id="leave_btn"><a href="#">Apply for leave<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
-                    <li><a href="#">Send Message<i class="fa fa-envelope fa-fw sub_icon"></i></a></li>                
-                    <li><a href="#">History<i class="fa fa-history fa-fw sub_icon"></i></a></li>
-                    <li><a href="#">Announcements<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li> -->
-                    
-                </ul>
+                </div>
+                <div class="sidebar-nav" id="sidebar">     
+                    <li><a href="#" data-parent="#sidebar">See Requests<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                    <li id="leave_btn"><a href="#demo3" data-toggle="collapse" data-parent="#sidebar">Pending Requests<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
+                        <div class="collapse" id="demo3">
+                            <li><a id="leave_btn" href="<?php echo base_url('index.php/guard/see_requests') ;?>">For leave</a></li>
+                            <li><a href="#" >For hostel change</a></li>
+                            <li><a href="#" >Complaint</a></li>
+                            <li><a href="#" >Other</a></li>
+                        </div>        
+                    <li id="leave_btn"><a href="#" data-toggle="collapse" data-parent="#sidebar">History<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
+                    <li><a href="#" data-parent="#sidebar">Send Message<i class="fa fa-envelope fa-fw sub_icon"></i></a></li>                
+                </div>
             </div>
           
             <div id="page-content-wrapper">
@@ -228,14 +205,13 @@
                                                         <div class="huge"></div>
                                                         <div>Welcome  <?php
                                                             $user_data = $this->session->userdata('0');
-                                                            echo '<br>'.'<font size="5">'.$user_data->name.'</font>';?>
+                                                            echo '<br>'.'<font size="5">'.$user_data->guard_name.'</font>';?>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-md-5">
                                         <div class="panel panel-green">
                                             <div class="panel-heading">
@@ -270,47 +246,87 @@
 
                                     <h3 class="sub-header"><div id="event">Notifcations</div></h3>
                                     <div id="notf_display">
-                                        <div class="table-responsive" id="apply_status">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>S.No</th>
-                                                        <th>Notification</th>
-                                                        <th>Status</th>                                                    
-                                                    </tr>
-                                                </thead>
-                                                <tbody>                                                                                                                                         
-                                                    <tr>
-                                                        <td>1,002</td>
-                                                        <td>amet</td>
-                                                        <td>consectetur</td>
-                                                        <td>adipiscing</td>
-                                                        <td>elit</td>
-                                                    </tr>                                                      
-                                                </tbody>
-                                            </table>
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal" action="<?php echo base_url('index.php/guard/find_student_roll'); ?>" method="post">
+                                        <div class="form-group">
+                                        <div class="col-sm-7">
+                                         <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-child"  ></i></span>
+                                            <input type="text" name="get_roll_no" class="form-control" placeholder="Student Roll No" required/>
                                         </div>
+                                        <div style="text-align:center;">
+                                        <input type="submit" class="btn btn-success"  name="login_guard_btn" value="Find" />
+                                       </div>
+
+                                        </div>
+                                        </div>    
+                                        </form>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <form action="find_student_roll" method="post">
+                                        <div class="form-group">
+                                        <div class="col-sm-7">
+                                         <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"  ></i></span>
+                                            <input type="text" name="get_roll_no" class="form-control" placeholder="Student Name" required/>
+                                        </div>
+                                        <div style="text-align:center;">
+                                        <input type="submit" class="btn btn-success"  name="login_guard_btn" value="Find" />
+                                       </div>
+
+                                        </div>
+                                        </div>    
+                                        </form>
+                                    </div>
                                     </div>
                                 </div>                             
-                                <div class="col-md-1"></div>
+                            
+                                <div class="table-responsive" id="apply_status">
+                                            <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                   <th>S.No</th>
+                                                    <th>From Roll No</th>
+                                                    <th>From </th>
+                                                    <th>To </th>
+                                                    <th>Hostel No </th>
+                                                    <th>Going To</th>
+                                                    <th>Status </th>
+                                                   
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php
+                                               if(isset($get_student_roll_no)){
+                                               $count=0;
+                                               foreach($get_student_roll_no as $row){
+                                                $count=$count+1;
+                                                echo '<tr>'.
+                                                    '<td>'.$count.'</td>'.
+                                                    '<td>'.$row->leave_from_roll_no.'</td>'.
+                                                    '<td>'.$row->leave_from_date.'</td>'.
+                                                    '<td>'.$row->leave_till_date.'</td>'.
+                                                    '<td>'.$row->leave_hostel_no.'</td>'.
+                                                     '<td>'.$row->leave_going_to.'</td>'.
+                                                    '<td>'.$row->leave_status.'</td>'.
+                                                     '</tr>';
+                                               }  
+                                           }
+                                               ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+
                             </div>
                         </div>                                              
                     </div>
                 </div>
             </div>
-            <footer>
-                <div class="container-fluid">
-                    <br><br>
-                    <center>
-                    <hr>
-                        <p style="color:black;">Designed & Developed by JUIT-IEEE</p> 
-                        <a href="https://www.facebook.com/juit.ieee.sb"><img height="32" width="32" src="./img/fbicon.svg" alt="FB"></a>&nbsp; 
-                        <a href="https://www.twitter.com/juitieee"><img src="./img/twiticon.svg" alt="twitter_logo"></a>&nbsp;
-                        <a href="https://plus.google.com/+JUITIEEE"><img src="./img/googleicon.svg" alt="email"></a>&nbsp;
-                    <br><br>
-                    </center>
-                </div>
-            </footer>
+    
         </div>
         
         <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
