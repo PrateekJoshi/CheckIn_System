@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/sb-admin-2.css'); ?>">
 
         <title>Student Panel | CheckIn & CheckOut</title>
+
     </head>
 
     <body>
@@ -247,7 +248,7 @@
                                     </div>
 
                                     <h3 class="sub-header"><div id="event">Notifcations</div></h3>
-                                    <div id="notf_display">
+                                    <div id="display_menu1" style="display:block">
                                         <div class="table-responsive" id="apply_status">
                                              <table class="table table-striped">
                                             <thead>
@@ -283,19 +284,76 @@
                                             </tbody>
                                         </table>
                                         </div>
-                                    </div>
-                                    
+                                    </div>                                    
                                 </div>                             
-                                <div class="col-md-1"></div>
+                                <!--testing jquery-->
+                                       '<div class="row1" id="display_menu2" style="display:none">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <form class="form-horizontal" action="student/apply_leave_validation" method="post">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-5 control-label">Select Warden</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" id="sel1" name="leave_warden_code">
+                                            <option value="99100">Mr.Pradeep Garg</option>
+                                            <option value="99101">Dr.Neelkanth</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                 <div class="form-group" >
+                                    <label for="inputPassword3" class="col-sm-5 control-label">Going to</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="leave_going_to">
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-5 control-label">From:</label>
+                                    <div class="col-sm-7">
+                                        <input type="date" class="form-control" name="leave_from_date">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-5 control-label">To:</label>
+                                    <div class="col-sm-7">
+                                        <input type="date" class="form-control" name="leave_till_date">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-5 control-label">Hostel No.:</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="leave_hostel_no">
+                                    </div>
+                                </div>
+                                <div class = "form-group">
+                                    <label for = "reg-resume_headline" class = "col-md-5 control-label">Message:</label>
+                                    <div class = "col-md-7">
+                                        <textarea class="form-control" rows="3" style = "border-radius: 0px;" name="leave_other_info"></textarea>
+                                    </div>
+                                </div>
+        
+                                <div class="form-group">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6">
+                                        <input type="submit" class="btn btn-info" name="btn_leave_submit" value="Send Application">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>;  
+
+                                <!--end testing-->
                             </div>
                         </div>                                              
                     </div>
                 </div>
             </div>
         </div>
+      
         
         <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+         <script src="<?php echo base_url('assets/js/menu_change.js'); ?>"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script type="text/javascript">
             $("#menu-toggle").click(function(e) {
@@ -303,7 +361,6 @@
                 $("#wrapper").toggleClass("active");
             });
         </script>
-        <script src="<?php echo base_url('assets/js/student_apply_leave.js'); ?>"></script>  
-        <script src="<?php echo base_url('assets/js/student_show_leave.js'); ?>"></script>   
+        
     </body>
 </html>

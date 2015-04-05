@@ -257,6 +257,7 @@
                                                    <th>S.No</th>
                                                     <th>From Roll No</th>
                                                     <th>Student Name</th>
+                                                    <th>Going To</th>
                                                     <th>From </th>
                                                     <th>To </th>
                                                     <th>Hostel No </th>
@@ -275,6 +276,7 @@
                                                     '<td>'.$count.'</td>'.
                                                     '<td>'.$row->leave_from_roll_no.'</td>'.
                                                     '<td>'.$row->leave_student_name.'</td>'.
+                                                    '<td>'.$row->leave_going_to.'</td>'.
                                                     '<td>'.$row->leave_from_date.'</td>'.
                                                     '<td>'.$row->leave_till_date.'</td>'.
                                                     '<td>'.$row->leave_hostel_no.'</td>'.

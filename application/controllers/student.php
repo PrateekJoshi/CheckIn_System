@@ -57,7 +57,7 @@ class Student extends CI_Controller {
 
 
       $this->load->library('email');
-      $this->email->from('joshi.prateek15@gmail.com', 'Prateek');
+      $this->email->from('prateekthegreat15@gmail.com', 'Prateek');
       $this->email->to($email_to); 
       $this->email->subject('Check-In JUIT:Application Submited');
       $this->email->message($email_message);  
