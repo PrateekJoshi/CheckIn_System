@@ -144,13 +144,10 @@
                     </li>
 
                     <li class="active dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp; <?php
-                                         $user_data = $this->session->userdata('0');
-                                         echo $user_data->student_name;
-                                         ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;&nbsp;First_Name_of_User&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                         <!-- name of the user here.... -->
                         <ul class="dropdown-menu">
-                            <li class="dropdown-header"></li>
+                            <li class="dropdown-header">Admin</li>
                             <li>
                                 <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
@@ -173,7 +170,7 @@
                 <div class="sidebar-nav" id="sidebar">     
                     <li><a href="#" data-parent="#sidebar">See assignments<i class="fa fa-book fa-fw sub_icon"></i></a></li>
                     <li id="leave_status_btn"><a href="#" data-parent="#sidebar">Leave application status<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>
-                    <li id="#"><a href="#demo3" data-toggle="collapse" data-parent="#sidebar">Application Form<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
+                    <li id="leave_btn"><a href="#demo3" data-toggle="collapse" data-parent="#sidebar">Application Form<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
                         <div class="collapse" id="demo3">
                             <li id="leave_btn"><a href="#" >For leave</a></li>
                             <li><a href="#" >For hostel change</a></li>
@@ -204,9 +201,8 @@
                                                     <div class="col-xs-9 text-right">
                                                         <div class="huge"></div>
                                                         <div>Welcome  <?php
-                                         $user_data = $this->session->userdata('0');
-                                         echo '<br>'.'<font size="5">'.$user_data->student_name.'</font>';
-                                         ?>
+                                                            $user_data = $this->session->userdata('0');
+                                                            echo '<br>'.'<font size="5">'.$user_data->name.'</font>';?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -249,42 +245,26 @@
                                     <h3 class="sub-header"><div id="event">Notifcations</div></h3>
                                     <div id="notf_display">
                                         <div class="table-responsive" id="apply_status">
-                                             <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                   <th>S.No</th>
-                                                    <th>Going To</th>
-                                                    <th>From Date</th>
-                                                    <th>To Date </th>
-                                                    <th>Message</th>
-                                                    <th>Seen</th>
-                                                    <th>Status</th>
-                                                
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                               <?php
-                                               $count=0;
-                                               foreach($leave_req as $row){
-                                                $count=$count+1;
-                                                echo '<tr>'.
-                                                    '<td>'.$count.'</td>'.
-                                                    '<td>'.$row->leave_going_to.'</td>'.
-                                                    '<td>'.$row->leave_from_date.'</td>'.
-                                                    '<td>'.$row->leave_till_date.'</td>'.
-                                                    '<td>'.$row->leave_other_info.'</td>'.
-                                                    '<td>'.$row->leave_seen.'</td>'.
-                                                    '<td>'.$row->leave_status.'</td>'.
-                                                    '</tr>';
-                                               }  
-                                               ?>
-                                                
-                                                  
-                                            </tbody>
-                                        </table>
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>S.No</th>
+                                                        <th>Notification</th>
+                                                        <th>Status</th>                                                    
+                                                    </tr>
+                                                </thead>
+                                                <tbody>                                                                                                                                         
+                                                    <tr>
+                                                        <td>1,002</td>
+                                                        <td>amet</td>
+                                                        <td>consectetur</td>
+                                                        <td>adipiscing</td>
+                                                        <td>elit</td>
+                                                    </tr>                                                      
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    
                                 </div>                             
                                 <div class="col-md-1"></div>
                             </div>
@@ -303,7 +283,6 @@
                 $("#wrapper").toggleClass("active");
             });
         </script>
-        <script src="<?php echo base_url('assets/js/student_apply_leave.js'); ?>"></script>  
-        <script src="<?php echo base_url('assets/js/student_show_leave.js'); ?>"></script>   
+        <script src="<?php echo base_url('assets/js/apply_leave.js'); ?>"></script>   
     </body>
 </html>

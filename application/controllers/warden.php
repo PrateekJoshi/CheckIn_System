@@ -71,24 +71,6 @@ public function login_validation(){
   	$this->load->view('view_warden',$result);
   }
 
-public function approve_leave(){
-  $this->load->model('model_warden');
-  $updated=$this->model_warden->change_leave_status();
-  if($updated==true){
-  $result['status_update']="Status updated";
-  $this->load->model('model_warden');
-  $result['app']= $this->model_warden->fetch_applications();
-  $this->load->helper('url');
-  $this->load->view('view_warden',$result);
-}else{
-  $result['error_update']="Unable to update status";
-  $this->load->model('model_warden');
-  $result['app']= $this->model_warden->fetch_applications();
-  $this->load->helper('url');
-  $this->load->view('view_warden',$result);
-}
-
-}
 
 
 }

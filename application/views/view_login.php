@@ -118,7 +118,7 @@
                                         </div>
                                      <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-                                            <input type="password" name="login_guard_password" class="form-control" placeholder="Guard Password" required/>
+                                            <input type="password" name="login_guard_code" class="form-control" placeholder="Guard Password" required/>
                                         </div>
                                        <div style="text-align:center;">  
                                      <input type="submit" class="btn btn-success"  name="login_guard_btn" value="Login" />

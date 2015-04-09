@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
+ini_set('display_errors', 1);
 
 class Student extends CI_Controller {
 
@@ -30,15 +30,13 @@ class Student extends CI_Controller {
       //$user_data = $this->session->userdata('user_data');
       $user_data=$this->model_student->get_session_data();
       $this->session->set_userdata($user_data);
-      $result['leave_req']=$this->leave_request();
-  	  $this->load->view('view_student',$result);
+  	  $this->load->view('view_student',$user_data);
   }
 
   public function apply_leave_validation(){
     
     $this->load->library('form_validation');
-    $this->form_validation->set_rules('leave_warden_code','Select Warden','required |xss_clean|trim|callback_validate_leave');
-    $this->form_validation->set_rules('leave_hostel_no','Hostel No','required |xss_clean|trim');
+    $this->form_validation->set_rules('leave_warden','Select Warden','required |xss_clean|trim|callback_validate_leave');
     $this->form_validation->set_rules('leave_going_to','Going to','required |xss_clean|trim');
     $this->form_validation->set_rules('leave_going_date','Going date','required |xss_clean|trim');
     $this->form_validation->set_rules('leave_going_till_date','Going Till date','required |xss_clean|trim');
@@ -57,7 +55,7 @@ class Student extends CI_Controller {
 
 
       $this->load->library('email');
-      $this->email->from('joshi.prateek15@gmail.com', 'Prateek');
+      $this->email->from('kumarkartik1507@gmail.com', 'Prateek');
       $this->email->to($email_to); 
       $this->email->subject('Check-In JUIT:Application Submited');
       $this->email->message($email_message);  
@@ -97,12 +95,6 @@ public function validate_leave(){
       return false;
 
     }
-}
-
-public function leave_request(){
-  $this->load->model('model_student');
-  $req_pending=$this->model_student->get_request($this->session->userdata('student_roll_no'));
-  return $req_pending;
 }
 
 
