@@ -51,6 +51,17 @@ public function login_validation(){
 
   }
 
+  public function validate_upload_assignment(){
+  	$this->load->model('model_warden');
+  	if($this->model_warden->upload_assignment()){     
+  		return true;
+  	}else{
+  		$this->form_validation->set_message('upload_file','unable to upload file');
+  		return false;
+
+  	}
+  }
+
   public function logout()
   {
     $user_data = $this->session->all_userdata();
@@ -66,7 +77,13 @@ public function login_validation(){
 
   public function see_requests(){
   	$this->load->model('model_warden');
-  	$result['app']= $this->model_warden->fetch_applications();
+  	$result['app_leave']= $this->model_warden->fetch_leave_applications();
+  	$result['app_hostel']= $this->model_warden->fetch_hostel_applications();
+  	$result['message_req']=$this->message_request();
+  	$result['message_sent_req']=$this->message_sent_request();
+  	list($file,$roll)=$this->assignment_sent_request();
+  	$result['file_req']=$file;
+  	$result['roll_req']=$roll;
   	$this->load->helper('url');
   	$this->load->view('view_warden',$result);
   }
@@ -75,20 +92,104 @@ public function approve_leave(){
   $this->load->model('model_warden');
   $updated=$this->model_warden->change_leave_status();
   if($updated==true){
-  $result['status_update']="Status updated";
-  $this->load->model('model_warden');
-  $result['app']= $this->model_warden->fetch_applications();
-  $this->load->helper('url');
-  $this->load->view('view_warden',$result);
+   echo '<script type="text/javascript">'.
+        'alert("Status Updated");'.
+        '</script>';
+  $this->see_updated_requests('leave');
 }else{
-  $result['error_update']="Unable to update status";
+	   echo '<script type="text/javascript">'.
+        'alert("unable to update status");'.
+        '</script>';
+   $this->see_updated_requests('leave');
+}
+
+}
+
+public function approve_hostel_change(){
   $this->load->model('model_warden');
-  $result['app']= $this->model_warden->fetch_applications();
-  $this->load->helper('url');
-  $this->load->view('view_warden',$result);
+  $updated=$this->model_warden->change_hostel_status();
+  if($updated==true){
+ echo '<script type="text/javascript">'.
+        'alert("Status updated");'.
+        '</script>';
+  $this->see_updated_requests('hostel');
+}else{
+	   echo '<script type="text/javascript">'.
+        'alert("unable to update status");'.
+        '</script>';
+    $this->see_updated_requests('hostel');
 }
 
 }
+public function send_message(){
+  $this->load->model('model_warden');
+  $msg_send=$this->model_warden->send_message($this->session->userdata('warden_code'));
+  if($msg_send==true){
+    echo '<script type="text/javascript">'.
+        'alert("message sent");'.
+        '</script>';
+   $this->see_updated_requests(null);
 
+}else{
+  echo '<script type="text/javascript">'.
+        'alert("unable to send message");'.
+        '</script>';
+$this->see_updated_requests(null);
 
+}
+}
+
+public function message_request(){
+  $this->load->model('model_warden');
+  $req_pending=$this->model_warden->get_message_request($this->session->userdata('warden_code'));
+  return $req_pending;
+}
+
+public function message_sent_request(){
+  $this->load->model('model_warden');
+  $req_pending=$this->model_warden->get_message_sent_request($this->session->userdata('warden_code'));
+  return $req_pending;
+}
+
+public function assignment_sent_request(){
+  $this->load->model('model_warden');
+  $req_pending=$this->model_warden->get_assignment_sent_request($this->session->userdata('warden_code'));
+  return $req_pending;
+}
+
+public function upload_assignment(){
+	$this->load->library('form_validation');
+    $this->form_validation->set_rules('from_roll_no','From Roll No','required |xss_clean|trim|callback_validate_upload_assignment');
+    $this->form_validation->set_rules('to_roll_no','To Roll No','required |xss_clean|trim');
+    $this->form_validation->set_rules('last_date','Last Date','required |xss_clean|trim');
+    $this->form_validation->set_rules('remark','Remark','required |xss_clean|trim');
+    $this->form_validation->set_rules('upload_file','Upload File','required |xss_clean|trim');
+
+    
+   //if validation successful
+    if($this->form_validation->run()){
+      echo '<script type="text/javascript">'.
+        'alert("Assignment uploaded");'.
+        '</script>';
+        $this->see_requests();
+    }else{
+        echo '<script type="text/javascript">'.
+        'alert("Unable to upload this file");'.
+        '</script>';
+        $this->see_requests();
+      
+    }
+}
+
+ public function see_updated_requests($app){
+ 	if($app=='leave')
+ 		$result['type']='leave';
+ 	if($app=='hostel')
+ 		$result['type']='hostel';
+  	$this->load->model('model_warden');
+  	$result['app_leave']= $this->model_warden->fetch_leave_applications();
+  	$result['app_hostel']= $this->model_warden->fetch_hostel_applications();
+  	$this->load->helper('url');
+  	$this->load->view('view_warden',$result);
+  }
 }

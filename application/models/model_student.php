@@ -49,7 +49,6 @@ public function can_send_leave($roll_no){
           'leave_date_submit'=>date('Y-m-d'),
           'leave_date_status_change'=>"",
           'leave_status'=>"Under Review",
-          'leave_msg_from_warden'=>"",
           'leave_seen'=>"Unseen"
 
 );
@@ -61,12 +60,99 @@ public function can_send_leave($roll_no){
 
 }
 
-public function get_request($roll){
+public function can_send_hostel_change($roll_no){
+    $user_data = $this->session->userdata('0');
+    $student_name=$user_data->student_name;
+
+    $warden_code=$this->input->post('warden_code');
+    $to_hostel=$this->input->post('to_hostel');
+    $from_hostel=$this->input->post('from_hostel');
+    $message=$this->input->post('message');
+
+    $data = array(
+          'roll_no'=>$roll_no,
+           'student_name'=>$student_name,
+          'warden_code'=>$warden_code,
+          'from_hostel'=>$from_hostel,
+          'to_hostel'=>$to_hostel,
+          'message'=>$message,
+          'date_submit'=>date('Y-m-d'),
+          'date_status_change'=>'',
+          'status'=>'Under Review',
+          'date_last_seen'=>''
+
+);
+  $query=$this->db->insert('hostel_application',$data);
+  if($query)
+    return true;
+  else
+    return false;
+
+}
+
+public function get_leave_request($roll){
    $this->db->select("leave_warden_code,leave_going_to,leave_from_date,leave_till_date,leave_other_info,leave_date_submit,leave_seen,leave_status"); 
    $this->db->from('leave_application');
    $this->db->where('leave_from_roll_no',$this->session->userdata('roll_no'));
    $query = $this->db->get();
   return $query->result();
+
+}
+
+public function get_hostel_request($roll){
+   $this->db->select("warden_code,from_hostel,to_hostel,message,date_submit,status"); 
+   $this->db->from('hostel_application');
+   $this->db->where('roll_no',$this->session->userdata('roll_no'));
+   $query = $this->db->get();
+  return $query->result();
+
+}
+
+public function get_message_request($roll_no){
+   $this->db->select("from_roll_no,to_roll_no,from_name,message,date"); 
+   $this->db->from('messages');
+   $this->db->where('to_roll_no',$roll_no);
+   $query = $this->db->get();
+  return $query->result();
+
+}
+
+public function get_assignment_request($roll_no){
+   $this->db->select("from_warden,file_name,last_date,remark,date_submit"); 
+   $this->db->from('assignments');
+   $this->db->where('to_roll_no',$roll_no);
+   $query = $this->db->get();
+  return $query->result();
+}
+
+public function get_message_sent_request($roll_no){
+   $this->db->select("from_roll_no,to_roll_no,from_name,message,date"); 
+   $this->db->from('messages');
+   $this->db->where('from_roll_no',$roll_no);
+   $query = $this->db->get();
+  return $query->result();
+
+}
+public function send_message($roll_no){
+   $from_roll_no=$roll_no;
+   $user_data = $this->session->userdata('0');
+   $from_name= $user_data->student_name;
+   $to_roll_no=$this->input->post('to_roll_no');
+   $message=$this->input->post('message');
+
+    $data = array(
+          'from_roll_no'=>$from_roll_no,
+          'from_name'=>$from_name,
+           'to_roll_no'=>$to_roll_no,
+          'message'=>$message,
+          'date'=>date('Y-m-d')
+
+);
+  $query=$this->db->insert('messages',$data);
+  if($query)
+    return true;
+  else
+    return false;
 
 }
 

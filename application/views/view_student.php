@@ -1,3 +1,4 @@
+
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -12,8 +13,8 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/sidebar.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dist/css/sb-admin-2.css'); ?>">
-
         <title>Student Panel | CheckIn & CheckOut</title>
+
     </head>
 
     <body>
@@ -156,7 +157,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="<?php echo 'student/logout' ;?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a> 
+                                <a href="<?php echo base_url('index.php/student/logout') ;?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a> 
                                 <!--to call logout func in student controller-->
                             </li>
                         </ul>
@@ -171,18 +172,23 @@
                     <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<i class="fa fa-bars fa-fw" id="main_icon"></i></a></li>
                 </div>
                 <div class="sidebar-nav" id="sidebar">     
-                    <li><a href="#" data-parent="#sidebar">See assignments<i class="fa fa-book fa-fw sub_icon"></i></a></li>
-                    <li id="leave_status_btn"><a href="#" data-parent="#sidebar">Leave application status<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>
+                    <li id="#"><a href="#demo4" data-toggle="collapse" data-parent="#sidebar">Application Status<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
+                        <div class="collapse" id="demo4">
+                            <li id="status_leave_btn"><a href="#" >Leave</a></li>
+                            <li id="status_hostel_btn"><a href="#" >Hostel Change</a></li>
+                        </div> 
                     <li id="#"><a href="#demo3" data-toggle="collapse" data-parent="#sidebar">Application Form<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
                         <div class="collapse" id="demo3">
                             <li id="leave_btn"><a href="#" >For leave</a></li>
-                            <li><a href="#" >For hostel change</a></li>
-                            <li><a href="#" >Complaint</a></li>
-                            <li><a href="#" >Other</a></li>
+                            <li id="hostel_change_btn"><a href="#" >For hostel change</a></li>
                         </div>            
-                    <li><a href="#" data-parent="#sidebar">Send Message<i class="fa fa-envelope fa-fw sub_icon"></i></a></li>                
-                    <li><a href="#" data-parent="#sidebar">History<i class="fa fa-history fa-fw sub_icon"></i></a></li>
-                    <li><a href="#" data-parent="#sidebar">Announcements<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
+                   <li id="#"><a href="#demo5" data-toggle="collapse" data-parent="#sidebar">Messages<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
+                        <div class="collapse" id="demo5">
+                            <li id="send_msg_btn"><a href="#" >Send Message</a></li>
+                            <li id="received_msg_btn"><a href="#">Received message</a></li>
+                            <li id="sent_msg_btn"><a href="#">Sent messages</a></li>
+                        </div>                
+                    <li id="assm_btn"><a href="#" data-parent="#sidebar">Assignments<i class="fa fa-history fa-fw sub_icon"></i></a></li>
                 </div>
             </div>
           
@@ -199,7 +205,10 @@
                                             <div class="panel-heading">
                                                 <div class="row">
                                                     <div class="col-xs-3">
-                                                        <i class="fa fa-user fa-5x"></i>
+                                                        <?php 
+                                                         //$user_data = $this->session->userdata('0');
+                                                         echo '<img src="'.base_url('assets/uploads/profile_pics/'.$this->session->userdata('roll_no').'.jpg').'" height="80" width="90">';
+                                                        ?>
                                                     </div>
                                                     <div class="col-xs-9 text-right">
                                                         <div class="huge"></div>
@@ -247,7 +256,7 @@
                                     </div>
 
                                     <h3 class="sub-header"><div id="event">Notifcations</div></h3>
-                                    <div id="notf_display">
+                                    <div id="display_menu1" style="display:block">
                                         <div class="table-responsive" id="apply_status">
                                              <table class="table table-striped">
                                             <thead>
@@ -283,19 +292,315 @@
                                             </tbody>
                                         </table>
                                         </div>
-                                    </div>
-                                    
+                                    </div>                                    
                                 </div>                             
-                                <div class="col-md-1"></div>
+                                <!--testing jquery-->
+                                       '<div class="row1" id="display_menu2" style="display:none">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <form class="form-horizontal" action="student/apply_leave_validation" method="post">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-5 control-label">Select Warden</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" id="sel1" name="leave_warden_code">
+                                            <option value="99100">Mr.Pradeep Garg</option>
+                                            <option value="99101">Dr.Neelkanth</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                 <div class="form-group" >
+                                    <label for="inputPassword3" class="col-sm-5 control-label">Going to</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="leave_going_to">
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-5 control-label">From:</label>
+                                    <div class="col-sm-7">
+                                        <input type="date" class="form-control" name="leave_from_date">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-5 control-label">To:</label>
+                                    <div class="col-sm-7">
+                                        <input type="date" class="form-control" name="leave_till_date">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-5 control-label">Hostel No.:</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="leave_hostel_no">
+                                    </div>
+                                </div>
+                                <div class = "form-group">
+                                    <label for = "reg-resume_headline" class = "col-md-5 control-label">Message:</label>
+                                    <div class = "col-md-7">
+                                        <textarea class="form-control" rows="3" style = "border-radius: 0px;" name="leave_other_info"></textarea>
+                                    </div>
+                                </div>
+        
+                                <div class="form-group">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6">
+                                        <input type="submit" class="btn btn-info" name="btn_leave_submit" value="Send Application">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>;  
+
+                                <!--end testing-->
+
+                                 <!--Form for hostel change-->
+                                       '<div class="row1" id="display_menu3" style="display:none">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <form class="form-horizontal" action="student/apply_hostel_validation" method="post">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-5 control-label">Select Warden</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" id="sel1" name="warden_code">
+                                            <option value="99100">Mr.Pradeep Garg</option>
+                                            <option value="99101">Dr.Neelkanth</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                 <div class="form-group" >
+                                    <label for="inputPassword3" class="col-sm-5 control-label">Applying for hostel:</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="to_hostel">
+                                    </div>
+                                </div>
+                                 
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-5 control-label">Current hostel:</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="from_hostel">
+                                    </div>
+                                </div>
+                                <div class = "form-group">
+                                    <label for = "reg-resume_headline" class = "col-md-5 control-label">Message:</label>
+                                    <div class = "col-md-7">
+                                        <textarea class="form-control" rows="3" style = "border-radius: 0px;"  name="message"></textarea>
+                                    </div>
+                                </div>
+        
+                                <div class="form-group">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6">
+                                        <input type="submit" class="btn btn-info" name="btn_hostel_submit" value="Send Application">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3"> </div>
+
+                    </div>
+
+
+                                <!--end testing-->
+                                <!--hostel change status-->
+                                   <div id="display_menu4" style="display:none;margin-left:30px;">
+                                        <div class="table-responsive" id="apply_status">
+                                             <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                   <th>S.No</th>
+                                                   <th>Current Hostel</th>
+                                                    <th>To Hostel</th>
+                                                    <th>Message</th>
+                                                    <th>Date Submitted</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php
+                                               $count=0;
+                                               foreach($hostel_req as $row){
+                                                $date_submit = strtotime($row->date_submit);
+                                                $count=$count+1;
+                                                echo '<tr>'.
+                                                    '<td>'.$count.'</td>'.
+                                                    '<td>'.$row->from_hostel.'</td>'.
+                                                    '<td>'.$row->to_hostel.'</td>'.
+                                                    '<td>'.$row->message.'</td>'.
+                                                    '<td>'.date('d/m/Y', $date_submit).'</td>'.
+                                                    '<td>'.$row->status.'</td>'.
+                                                    '</tr>';
+                                               }  
+                                               ?>
+                                                
+                                                  
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>                                    
+                                </div>            
+
+                                <!--end hostel change status-->
+
+                                
+                                 <!--Send Message Form-->
+                                       '<div class="row1" id="display_menu5" style="display:none">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <form class="form-horizontal" action="student/send_message" method="post">
+                                 <div class="form-group" >
+
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="to_roll_no" placeholder="Student roll no / warden code" required>
+                                    </div>
+                                </div>
+                                 <div class = "form-group">
+                                    <div class = "col-md-7">
+                                        <textarea class="form-control" rows="3" style = "border-radius: 0px;" name="message" placeholder="message" required></textarea>
+                                    </div>
+                                </div>
+        
+                                <div class="form-group" style="float:left;">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6" >
+                                        <input type="submit" class="btn btn-info" name="btn_message_submit" value="Send Message">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3"> </div>
+
+                    </div>
+
+
+                                <!--end testing-->
+
+                                <!--message received table-->
+                                   <div id="display_menu6" style="display:none;">
+                                        <div class="table-responsive" id="apply_status">
+                                             <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                   <th>S.No</th>
+                                                   <th>From Roll No</th>
+                                                   <th>Name</th>
+                                                   <th>Message</th>
+                                                   <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php
+                                               $count=0;
+                                               foreach($message_req as $row){
+                                                $date= strtotime($row->date);
+                                                $count=$count+1;
+                                                echo '<tr>'.
+                                                    '<td>'.$count.'</td>'.
+                                                    '<td>'.$row->from_roll_no.'</td>'.
+                                                    '<td>'.$row->from_name.'</td>'.
+                                                    '<td>'.$row->message.'</td>'.
+                                                    '<td>'.date('d/m/Y', $date).'</td>'.
+                                                    '</tr>';
+                                               }  
+                                               ?>
+                                                
+                                                  
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>                                    
+                                </div>            
+
+                                <!--end message received table-->
+
+                                <!--message sent  table-->
+                                   <div id="display_menu7" style="display:none;margin-left:30px;">
+                                        <div class="table-responsive" id="apply_status">
+                                             <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                   <th>S.No</th>
+                                                   <th>To Roll No</th>
+                                                   <th>Message</th>
+                                                   <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php
+                                               $count=0;
+                                               foreach($message_sent_req as $row){
+                                                $date= strtotime($row->date);
+                                                $count=$count+1;
+                                                echo '<tr>'.
+                                                    '<td>'.$count.'</td>'.
+                                                    '<td>'.$row->to_roll_no.'</td>'.
+                                                    '<td>'.$row->message.'</td>'.
+                                                    '<td>'.date('d/m/Y', $date).'</td>'.
+                                                    '</tr>';
+                                               }  
+                                               ?>
+                                                
+                                                  
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>                                    
+                                </div>            
+
+                                <!--end message received table-->
+
+
+                                <!--assignment recieved table-->
+                                   <div id="display_menu8" style="display:none;">
+                                        <div class="table-responsive" id="apply_status">
+                                             <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                   <th>S.No</th>
+                                                   <th>From Faculty</th>
+                                                   <th>Remark</th>
+                                                   <th>Date Submitted</th>
+                                                   <th>Last Date</th>
+                                                   <th>Assignment</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php
+                                               $count=0;
+                                               foreach($assm_req as $row){
+                                                $date1= strtotime($row->date_submit);
+                                                $date2= strtotime($row->last_date);
+                                                $count=$count+1;
+                                                echo '<tr>'.
+                                                    '<td>'.$count.'</td>'.
+                                                    '<td>'.$row->from_warden.'</td>'.
+                                                    '<td>'.$row->remark.'</td>'.
+                                                    '<td>'.date('d/m/Y', $date1).'</td>'.
+                                                    '<td>'.date('d/m/Y', $date2).'</td>'.
+                                                    '<td>'.'<a href=\''. base_url('/assets/uploads/assignments').'/'.$row->file_name.'\''.'target="_blank">'.'Download'.'</a>'.'</td>'.
+                                                    '</tr>';
+                                               }  
+                                               ?>
+                                                
+                                                  
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>                                    
+                                </div>            
+
+                                <!--end message received table-->
+
+                                
                             </div>
                         </div>                                              
                     </div>
                 </div>
             </div>
         </div>
+      
         
         <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+         <script src="<?php echo base_url('assets/js/menu_student.js'); ?>"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script type="text/javascript">
             $("#menu-toggle").click(function(e) {
@@ -303,7 +608,12 @@
                 $("#wrapper").toggleClass("active");
             });
         </script>
-        <script src="<?php echo base_url('assets/js/student_apply_leave.js'); ?>"></script>  
-        <script src="<?php echo base_url('assets/js/student_show_leave.js'); ?>"></script>   
+        
     </body>
 </html>
+
+<?php
+if(isset($msg_notf)){
+    echo $msg_notf;
+}
+?>

@@ -1,4 +1,3 @@
-
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -175,15 +174,23 @@
                 </div>
                 <div class="sidebar-nav" id="sidebar">     
                     <li><a href="#" data-parent="#sidebar">See Requests<i class="fa fa-sign-out fa-fw sub_icon"></i></a></li>
-                    <li id="leave_btn"><a href="#demo3" data-toggle="collapse" data-parent="#sidebar">Pending Requests<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
+                    <li id="#"><a href="#demo3" data-toggle="collapse" data-parent="#sidebar">Pending Requests<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
                         <div class="collapse" id="demo3">
-                            <li><a id="leave_btn" href="<?php echo base_url('index.php/warden/see_requests') ;?>">For leave</a></li>
-                            <li><a href="#" >For hostel change</a></li>
-                            <li><a href="#" >Complaint</a></li>
-                            <li><a href="#" >Other</a></li>
+                            <li id="leave_btn"><a href="#">For leave</a></li>
+                            <li id="hostel_btn"><a href="#">For hostel change</a></li>
+                            <li><a href="">Other</a></li>
                         </div>        
-                    <li id="leave_btn"><a href="#" data-toggle="collapse" data-parent="#sidebar">History<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
-                    <li><a href="#" data-parent="#sidebar">Send Message<i class="fa fa-envelope fa-fw sub_icon"></i></a></li>                
+                     <li id="#"><a href="#demo4" data-toggle="collapse" data-parent="#sidebar">Messages<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
+                        <div class="collapse" id="demo4">
+                            <li id="send_msg_btn"><a href="#">Send Message</a></li>
+                            <li id="received_msg_btn"><a href="#">Received Messages</a></li>
+                            <li id="sent_msg_btn"><a href="#">Sent Messages</a></li>
+                        </div>      
+                        <li id="#"><a href="#demo5" data-toggle="collapse" data-parent="#sidebar">Assignments<i class="fa fa-file-text fa-fw sub_icon"></i></a></li>      
+                        <div class="collapse" id="demo5">
+                            <li id="send_assm"><a href="#">Send Assignment</a></li>
+                            <li id="sent_assm"><a href="#">Sent Assignments</a></li>
+                        </div>             
                 </div>
             </div>
           
@@ -248,8 +255,8 @@
                                         </div>
                                     </div>
 
-                                    <h3 class="sub-header"><div id="event">Notifcations</div></h3>
-                                    <div id="notf_display">
+                                    <h3 class="sub-header"><div id="event">Leave applications</div></h3>
+                                    <div id="display_menu1" style="display:block;">
                                         <div class="table-responsive" id="apply_status">
                                             <table class="table table-striped">
                                             <thead>
@@ -257,6 +264,7 @@
                                                    <th>S.No</th>
                                                     <th>From Roll No</th>
                                                     <th>Student Name</th>
+                                                    <th>Going To</th>
                                                     <th>From </th>
                                                     <th>To </th>
                                                     <th>Hostel No </th>
@@ -269,14 +277,18 @@
                                             <tbody>
                                                <?php
                                                $count=0;
-                                               foreach($app as $row){
+                                               foreach($app_leave as $row){
+                                         
                                                 $count=$count+1;
+                                                $from_date = strtotime($row->leave_from_date);
+                                                $till_date=strtotime($row->leave_till_date);
                                                 echo '<tr>'.
                                                     '<td>'.$count.'</td>'.
                                                     '<td>'.$row->leave_from_roll_no.'</td>'.
                                                     '<td>'.$row->leave_student_name.'</td>'.
-                                                    '<td>'.$row->leave_from_date.'</td>'.
-                                                    '<td>'.$row->leave_till_date.'</td>'.
+                                                    '<td>'.$row->leave_going_to.'</td>'.
+                                                    '<td>'.date('d/m/Y', $from_date).'</td>'.
+                                                    '<td>'.date('d/m/Y', $till_date).'</td>'.
                                                     '<td>'.$row->leave_hostel_no.'</td>'.
                                                     '<td>'.$row->leave_other_info.'</td>'.
                                                     '<td>'.$row->leave_status.'</td>'.
@@ -294,14 +306,270 @@
                                     </div>
                                     </div>
                                 </div>                             
-                                <div class="col-md-1"></div>
+                                <!--Form for hostel change-->
+                                       '<div class="row1" id="display_menu2" style="display:none">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                                    <div id="notf_display">
+                                        <div class="table-responsive" id="apply_status">
+                                            <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                   <th>S.No</th>
+                                                    <th>From Roll No</th>
+                                                    <th>Student Name</th>
+                                                    <th>From Hostel</th>
+                                                    <th>To Hostel </th>                                           
+                                                    <th>Message</th>
+                                                    <th>Status </th>
+                                                    <th>Change Status</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php
+                                               $count=0;
+                                               foreach($app_hostel as $row){
+
+                                                $count=$count+1;
+                                              
+                                                echo '<tr>'.
+                                                    '<td>'.$count.'</td>'.
+                                                    '<td>'.$row->roll_no.'</td>'.
+                                                    '<td>'.$row->student_name.'</td>'.
+                                                    '<td>'.$row->from_hostel.'</td>'.
+                                                    '<td>'.$row->to_hostel.'</td>'.
+                                                    '<td>'.$row->message.'</td>'.
+                                                    '<td>'.$row->status.'</td>'.
+                                                    '<td>'
+                                                    .'<form action="approve_hostel_change" method="post">'.
+                                                    '<input type="hidden" name="approve_hostel_id" value='.'\''.$row->id.'\''.'>'.
+                                                    '<input type="submit" name="approve_hostel_status" class="btn btn-info btn-circle" value="Approve">'.
+                                                    '<input type="submit" name="approve_hostel_status" class="btn btn-danger btn-circle" value="&nbsp;&nbsp;Reject&nbsp;&nbsp;">'.
+                                                     '</form>'.
+                                                     '</td>'.'</tr>';
+                                               }  
+                                               ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                        </div>
+                      
+                    </div>
+
+                                <!--end testing-->
+                            
                             </div>
+                            <!--Send Message Form-->
+                                       '<div class="row1" id="display_menu4" style="display:none">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <form class="form-horizontal" action="send_message" method="post">
+                                 <div class="form-group" >
+
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="to_roll_no" placeholder="Student roll no / warden code" required>
+                                    </div>
+                                </div>
+                                 <div class = "form-group">
+                                    <div class = "col-md-7">
+                                        <textarea class="form-control" rows="3" style = "border-radius: 0px;" name="message" placeholder="message" required></textarea>
+                                    </div>
+                                </div>
+        
+                                <div class="form-group" style="float:left;">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6" >
+                                        <input type="submit" class="btn btn-info" name="btn_message_submit" value="Send Message">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3"> </div>
+
+                    </div>
+
+
+                                <!--end message form-->
+                                <!--message received table-->
+                                   <div id="display_menu5" style="display:none;margin-left:30px;">
+                                        <div class="table-responsive" id="apply_status">
+                                             <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                   <th>S.No</th>
+                                                   <th>From Roll No</th>
+                                                   <th>Name</th>
+                                                   <th>Message</th>
+                                                   <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php
+                                               $count=0;
+                                               foreach($message_req as $row){
+                                                $date= strtotime($row->date);
+                                                $count=$count+1;
+                                                echo '<tr>'.
+                                                    '<td>'.$count.'</td>'.
+                                                    '<td>'.$row->from_roll_no.'</td>'.
+                                                    '<td>'.$row->from_name.'</td>'.
+                                                    '<td>'.$row->message.'</td>'.
+                                                    '<td>'.date('d/m/Y', $date).'</td>'.
+                                                    '</tr>';
+                                               }  
+                                               ?>
+                                                
+                                                  
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>                                    
+                                </div>            
+
+                                <!--end message received table-->
+
+                                 <!--message sent  table-->
+                                   <div id="display_menu6" style="display:none;margin-left:30px;">
+                                        <div class="table-responsive" id="apply_status">
+                                             <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                   <th>S.No</th>
+                                                   <th>To Roll No</th>
+                                                   <th>Message</th>
+                                                   <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php
+                                               $count=0;
+                                               foreach($message_sent_req as $row){
+                                                $date= strtotime($row->date);
+                                                $count=$count+1;
+                                                echo '<tr>'.
+                                                    '<td>'.$count.'</td>'.
+                                                    '<td>'.$row->to_roll_no.'</td>'.
+                                                    '<td>'.$row->message.'</td>'.
+                                                    '<td>'.date('d/m/Y', $date).'</td>'.
+                                                    '</tr>';
+                                               }  
+                                               ?>
+                                                
+                                                  
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>                                    
+                                </div>            
+
+                                <!--end message sent table-->
+
+                                <!--Form for assignment upload-->
+                                       '<div class="row1" id="display_menu7" style="display:none;">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <form class="form-horizontal" action="upload_assignment" method="post" enctype="multipart/form-data">
+                                 <div class="form-group" >
+                                    <label for="inputPassword3" class="col-sm-5 control-label">From Roll No:</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="from_roll_no">
+                                    </div>
+                                </div>
+                                 
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-5 control-label">To Roll No:</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="to_roll_no">
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-5 control-label">Last date To Submit:</label>
+                                    <div class="col-sm-7">
+                                        <input type="date" class="form-control" name="last_date">
+                                    </div>
+                                </div>
+                                <div class = "form-group">
+                                    <label for = "reg-resume_headline" class = "col-md-5 control-label">Remark:</label>
+                                    <div class = "col-md-7">
+                                        <textarea class="form-control" rows="3" style = "border-radius: 0px;"  name="remark"></textarea>
+                                    </div>
+                                </div>
+                                 <div class = "form-group">
+                                    <label for = "reg-resume_headline" class = "col-md-5 control-label">Upload File:</label>
+                                    <div class = "col-md-7">
+                                       <input type="file" class="form-control" name="upload_file">
+                                    </div>
+                                </div>
+        
+                                <div class="form-group">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6">
+                                        <input type="submit" class="btn btn-info" name="btn_hostel_submit" value="Send Assignment">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3"> </div>
+
+                    </div>
+
+
+                                <!--end testing-->
+
+                                <!--assignment sent  table-->
+                                   <div id="display_menu8" style="display:none;margin-left:30px;">
+                                        <div class="table-responsive" id="apply_status">
+                                             <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                   <th>S.No</th>
+                                                   <th>To Roll Nos.</th>
+                                                   <th>Remark</th>
+                                                   <th>Date Submitted</th>
+                                                   <th>Last Date</th>
+                                                   <th>Assignmnet</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <?php
+                                               $count=0;
+                                               foreach($file_req as $row){
+                                                $date1= strtotime($row->date_submit);
+                                                $date2= strtotime($row->last_date);
+                                                $count=$count+1;
+                                                echo '<tr>'.
+                                                    '<td>'.$count.'</td>'.
+                                                    '<td>';
+                                                     foreach ($roll_req[$count] as $key) {
+                                                     	echo $key->to_roll_no.' , ';
+                                                     }
+                                                  
+                                                echo '</td>'.
+                                                    '<td>'.$row->remark.'</td>'.
+                                                    '<td>'.date('d/m/Y', $date1).'</td>'.
+                                                    '<td>'.date('d/m/Y', $date2).'</td>'.
+  '<td>'.'<a href=\''. base_url('/assets/uploads/assignments').'/'.$row->file_name.'\''.'target="_blank">'.'View'.'</a>'.'</td>'.
+                                                    '</tr>';
+                                               }  
+                                               ?>
+                                                
+                                                  
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>                                    
+                                </div>            
+
+                                <!--end message sent table-->
+
+
                         </div>                                              
                     </div>
                 </div>
             </div>
         </div>
- 
+         
         <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -311,23 +579,28 @@
                 $("#wrapper").toggleClass("active");
             });
         </script>
-        <script src="<?php echo base_url('assets/js/apply_leave.js'); ?>"></script>   
+        <script src="<?php echo base_url('assets/js/menu_warden.js'); ?>"></script>   
     </body>
 </html>
+
+<!--see updated table after changing status-->
 <?php
-if(isset($status_update) OR isset($error_update)){
-   if(isset($status_update)){
-    echo '<script type="text/javascript">'.
-        'alert("Status updated");'.
-        '</script>';
-
-   }
-   if(isset($error_update)){
-     echo '<script type="text/javascript">'.
-        'alert("Unable to Update Status !!");'.
-        '</script>';
-   }
-
+if(isset($type)){
+if($type=='hostel'){
+echo '<script>'.
+'$(document).ready(function(){
+$('.'\'#hostel_btn\')'.'.trigger('.'\'click\')'.';'.
+'});'.
+'</script>';
 }
-
+if($type=='leave'){
+echo '<script>'.
+'$(document).ready(function(){
+$('.'\'#leave_btn\')'.'.trigger('.'\'click\')'.';'.
+'});'.
+'</script>';
+}
+}
 ?>
+
+<!--end-->
