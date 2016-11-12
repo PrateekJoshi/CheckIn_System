@@ -5,7 +5,7 @@ Check-in &amp; Check out system for college students using PHP framework Codeign
 
 The user credentials for the application are following,
 
-####For Student:    Student1
+####For Student:   
                      Roll No:131416
                      pwd:123
                       
